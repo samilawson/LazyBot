@@ -6,7 +6,7 @@ const fs = require("fs");
 var request = require('superagent');
 var parseString = require('xml2js').parseString;
 var xml2js = require('xml2js');
-
+var TOKEN = process.env.TOKEN;
 bot.on("ready", () => {
    	bot.user.setGame(".help");
   	console.log("I am ready!");
@@ -211,3 +211,4 @@ bot.on("message", msg => {
 process.on("unhandledRejection", err => {
     console.error("Uncaught Promise Error: \n + err.stack");
 });
+bot.login(TOKEN);
