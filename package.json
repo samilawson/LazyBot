@@ -1,0 +1,25 @@
+{
+  "name": "LazyBot",
+  "version": "2.0.0",
+  "description": "A discord bot",
+  "engines": {
+    "node": "6.5.0",
+    "npm": "3.10.6"
+  },
+  "main": "LazyBot.js",
+  "scripts": {
+    "start": "node LazyBot.js"
+  },
+  "dependencies": {
+    "superagent": "3.3.0",
+    "discord.js": "10.0.0",
+    "xml2js": "0.4.17",
+    "request": "^2.79.0"
+  },
+  "keywords": [
+    "node",
+    "heroku"
+    
+  ],
+  "license": "MIT"
+}

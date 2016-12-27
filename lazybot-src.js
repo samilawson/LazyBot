@@ -6,22 +6,23 @@ const fs = require("fs");
 var request = require('superagent');
 var parseString = require('xml2js').parseString;
 var xml2js = require('xml2js');
+
 bot.on("ready", () => {
-   	bot.user.setGame("TVT RP");
+   	bot.user.setGame(".help");
   	console.log("I am ready!");
 });
 
 bot.on("message", msg => {
-	if (msg.content.startsWith(prefix + "n")){
+	if (msg.content.startsWith(prefix + "nat")){
         let args = msg.content.split(" ").slice(1);
         var nat = args.join("_");
         msg.channel.sendMessage('http://www.nationstates.net/nation=' + nat);
-    } else if (msg.content.startsWith(prefix + "r")){
+    } else if (msg.content.startsWith(prefix + "reg")){
         let regs = msg.content.split(" ").slice(1);
         var reg = regs.join("_");
         msg.channel.sendMessage('http://www.nationstates.net/region=' + reg);
     } else if(msg.content.startsWith(prefix + "help")){
-    	msg.channel.sendMessage("```" + "LazyBot Commands: \n .n <nation name> links to the Nationstates page of the nation \n .r <region name> links to the region page of the region \n .size <region name> gives the number of nations in a region \n .economy <nation name> gives the GDP \n .population <nation name> gives the population \n .WA <nation name> gives the WA membership \n .industry <nation name> gives the major industry \n .flag <nation name> \n .delegate <region name> \n .priority <nation name> \n .income <nation name> \n .desc <nation name> \n .activity <nation name> \n .influence <nation name> \n .leader <nation name> \n .tax <nation name>" + "```" );
+    	msg.channel.sendMessage("```" + "LazyBot Commands: \n .nat <nation name> links to the Nationstates page of the nation \n .reg <region name> links to the region page of the region \n .size <region name> gives the number of nations in a region \n .economy <nation name> gives the GDP \n .population <nation name> gives the population \n .WA <nation name> gives the WA membership \n .industry <nation name> gives the major industry \n .flag <nation name> \n .delegate <region name> \n .priority <nation name> \n .income <nation name> \n .desc <nation name> \n .activity <nation name> \n .influence <nation name> \n .leader <nation name> \n .tax <nation name>" + "```" );
     } else if(msg.content.startsWith(prefix + "size")){
     	let arg = msg.content.split(" ").slice(1);
     	var name = arg.join("_");
@@ -176,6 +177,7 @@ bot.on("message", msg => {
     	});
     }else if(msg.content.startsWith(prefix + "tax")){
     	let input = msg.content.split(" ").slice(1);
+    	console.log(input);
     	var name = input.join("_");
     	request.get('https://www.nationstates.net/cgi-bin/api.cgi?nation=' + name + '&q=tax').end((err, res) => {
     		console.log(res.text);
@@ -205,4 +207,7 @@ bot.on("message", msg => {
     	});
     }
 });
-bot.login(tokengoeshere);
+
+process.on("unhandledRejection", err => {
+    console.error("Uncaught Promise Error: \n + err.stack");
+});
