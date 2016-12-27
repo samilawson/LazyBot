@@ -210,5 +210,5 @@ bot.on("message", msg => {
 
 process.on("unhandledRejection", err => {
     console.error("Uncaught Promise Error: \n + err.stack");
-});
+});.listen(process.env.PORT || 5000);
 bot.login(TOKEN);
