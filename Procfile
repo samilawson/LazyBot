@@ -1,1 +1,1 @@
-web: node lazybot-src-new.js
+worker: node lazybot-src-new.js
