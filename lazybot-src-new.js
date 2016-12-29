@@ -205,10 +205,64 @@ bot.on("message", msg => {
     			});
     		});
     	});
+    } else if(msg.content=== (prefix + "rollone")){
+        var diceOne  = Math.floor( Math.random() * 20) + 1;
+        console.log(diceOne);
+        msg.channel.sendMessage(diceOne);
+    } else if (msg.content=== (prefix + 'rolltwo')){
+        var diceOne = Math.floor( Math.random() * 20) + 1;
+        var diceTwo = Math.floor(Math.random() * 20) + 1;
+        console.log(diceOne);
+        console.log(diceTwo);
+        msg.channel.sendMessage(diceOne + " | " + diceTwo);
+    }  else if (msg.content=== (prefix + "CTSN")){
+        let number = msg.guild.roles.find("name", "CTSN Member").members.size;
+        msg.channel.sendMessage("There are " + number + " CTSN Members here!");
+    } else if (msg.content=== (prefix + "USSD")){
+        let numberone = msg.guild.roles.find("name", "USSD Member").members.size;
+        msg.channel.sendMessage("There are " + numberone + " USSD Members here!");
+    } else if (msg.content.startsWith(prefix + "armysize")){
+        let args = msg.content.split(" ").slice(1);
+        var name = args.join("_");""
+        console.log(name);
+        request.get('https://www.nationstates.net/cgi-bin/api.cgi?nation=' + name + '&q=population').end((err, res) => {
+            //if(err) throw err;
+            console.log(res.text);
+            //var xml = res.text;
+            var numbero = res.text.replace(/(<([^>]+)>)/ig,"");
+            console.log(numbero);
+            var size = (numbero * 1000000);
+            console.log(size);
+            var final = size * .05;
+            console.log(final);
+            var endresult = final.toLocaleString();
+            console.log(endresult);
+            msg.channel.sendMessage("Army Size: " + endresult);
+        
+            
+        });
+        
+        
+    } else if(msg.content === (prefix + "Exodus")){
+        let numbertwo = msg.guild.roles.find("name", "Exodus Member").members.size;
+        msg.channel.sendMessage("There are " + numbertwo + " Exodus members here!");
+    } else if(msg.content === (prefix + "mods")){
+        msg.channel.sendMesage("```" + "Our mods: Siberia, Vetelo, Melorian Republic, NuclearWaste123, and New Vapaus!" + "```");
+    } else if(msg.content === (prefix + "rphelp")){
+        msg.channel.sendMessage("```\nList of RP Commands:\n| .rollone \n| .rollTwo \n| .CTSN \n| .USSD \n| .Exodus" + "```");
     }
 });
 
 process.on("unhandledRejection", err => {
     console.error("Uncaught Promise Error: \n + err.stack");
-});.listen(process.env.PORT || 5000);
+});
+bot.on('guildCreate', Guild => {
+  let toSend = [
+ "\:white_check_mark: I've been invited to this server: " + Guild.name,
+  "Guild ID: " + Guild.id,
+  "Guild Members Count: " + Guild.memberCount,
+  "Guild Region: " + Guild.region
+];
+bot.channels.get("263423925017378816").sendMessage(toSend);
+});
 bot.login(TOKEN);
