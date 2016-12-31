@@ -189,23 +189,7 @@ bot.on("message", msg => {
     } else if (msg.content.startsWith(prefix + "TVT")){
     	let number = msg.guild.roles.find("name", "TVT Partisan").members.size;
     	msg.channel.sendMessage("There are " + number + " TVT Partisans here!");
-    } else if(msg.content==="f"){
-    	fs.readFile('memorial.xml', 'utf-8', function (err, data){
-    		console.log(data);
-    		parseString(data.toString(), function(err, result){
-    			console.log(result);
-    			var json = result;
-    			var next = json.counter.meme++;
-    			console.log(next);
-    			var builder = new xml2js.Builder();
-    			var xml = builder.buildObject(json);
-    			fs.writeFile('memorial.xml', xml, function(err, data){
-    				console.log("successful");
-    			msg.channel.sendMessage("Thank you for paying respects. " + json.counter.meme + " respects paid so far.")
-    			});
-    		});
-    	});
-    } else if(msg.content=== (prefix + "rollone")){
+    }  else if(msg.content=== (prefix + "rollone")){
         var diceOne  = Math.floor( Math.random() * 20) + 1;
         console.log(diceOne);
         msg.channel.sendMessage(diceOne);
