@@ -1,1 +1,1 @@
-worker: npm start lazybot-src-new.js
+worker: npm start 
