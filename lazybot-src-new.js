@@ -6,6 +6,8 @@ const fs = require("fs");
 var request = require('superagent');
 var parseString = require('xml2js').parseString;
 var xml2js = require('xml2js');
+const moment = require('moment');
+require("moment-duration-format");
 var TOKEN = process.env.TOKEN;
 bot.on("ready", () => {
    	bot.user.setGame(".help | .invite");
