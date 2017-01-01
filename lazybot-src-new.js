@@ -23,13 +23,13 @@ bot.on("message", msg => {
   const now = new Date();
   const date = moment(now).format("MMM/DD/YYYY"); //This is better. 
   const time = moment(now).format("H:mm:ss");
-  const result = request.get(`https://www.nationstates.net/cgi-bin/api.cgi?nation=${name}&q=gdp+population+region+wa+flag+fullname+influence+census;mode=score;scale=66`);
+  const result = request.get(`https://www.nationstates.net/cgi-bin/api.cgi?nation=${name}&q=name+gdp+population+region+wa+flag+fullname+influence+census;mode=score;scale=66`);
 
   result.then((res) => {
     parseString(res.text, (err, obj) => {
       embed.setColor(3447003)
-        .setAuthor(args, `${obj.NATION.FLAG}`)
-        .setTitle(`Nation Info for ${args}`)
+        .setAuthor(`${obj.NATION.NAME}`, `${obj.NATION.FLAG}`)
+        .setTitle(`Nation Info for ${obj.NATION.NAME}`)
         .setDescription(obj.NATION.FULLNAME)
         .setThumbnail(`${obj.NATION.FLAG}`)
         .addField('Region', obj.NATION.REGION, true)
@@ -38,6 +38,7 @@ bot.on("message", msg => {
         .addField('Economy', "$" + obj.NATION.GDP, true)
         .addField('WA Status?', obj.NATION.UNSTATUS, true)
         .addField('Endorsement Count', Math.round(obj.NATION.CENSUS[0].SCALE[0].SCORE), true)
+	.addField('Link', "http://www.nationstates.net/nation=" + args)
         .setFooter(`Generated on ${date} at ${time}. For more extensive information, type .more <nation name>`)
       msg.channel.sendEmbed(embed);
     })
@@ -61,7 +62,7 @@ bot.on("message", msg => {
       .addField(`Number of Nations`, obj.REGION.NUMNATIONS, true)
       .addField(`Power`, obj.REGION.POWER, true)
       .addField(`WA Delegate`, obj.REGION.DELEGATE, true)
-      //.addField(`Tags`, obj.REGION.TAGS.TAG)
+      .addField(`Link`, "https://www.nationstates.net/region=" + args)
       .setFooter(`Generated on ${date} at ${time}`)
       msg.channel.sendEmbed(embed);
     })
@@ -94,11 +95,11 @@ bot.on("message", msg => {
   const now = new Date();
   const date = moment(now).format("MMM/DD/YYYY");
   const time = moment(now).format("H:mm:ss");
-  const result = request.get(`https://nationstates.net/cgi-bin/api.cgi?nation=${name}&q=govtpriority+income+lastactivity+leader+tax+capital+category+flag+fullname+majorindustry`);
+  const result = request.get(`https://nationstates.net/cgi-bin/api.cgi?nation=${name}&q=name+govtpriority+income+lastactivity+leader+tax+capital+category+flag+fullname+majorindustry`);
   result.then((res) => {
     parseString(res.text, (err, obj) => {
       embed.setColor(3447003)
-      .setAuthor(args, `${obj.NATION.FLAG}`)
+      .setAuthor(`${obj.NATION.NAME}`, `${obj.NATION.FLAG}`)
       .setTitle('More Nation Stats')
       .setDescription(`${obj.NATION.FULLNAME}`)
       .setThumbnail(`${obj.NATION.FLAG}`)
