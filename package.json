@@ -6,9 +6,9 @@
     "node": "6.5.0",
     "npm": "3.10.6"
   },
-  "main": "LazyBot.js",
+  "main": "lazybot-src-new.js",
   "scripts": {
-    "start": "node LazyBot.js"
+    "start": "node lazybot-src-new.js"
   },
   "dependencies": {
     "superagent": "3.3.0",

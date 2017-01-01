@@ -220,6 +220,7 @@ bot.on('guildCreate', Guild => {
 
 bot.channels.get("263423925017378816").sendMessage(toSend);
 });
+<<<<<<< HEAD
 
 bot.on('guildMemberAdd', member => {
     var msg;
@@ -232,4 +233,6 @@ bot.on('guildMemberRemove', member => {
     bot.channels.get("264792406694559745").sendMessage(msg);
 });
 
+=======
+>>>>>>> origin/master
 bot.login(TOKEN);
