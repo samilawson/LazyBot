@@ -68,8 +68,7 @@ bot.on("message", msg => {
       .addField(`WA Delegate`, obj.REGION.DELEGATE, true)
       .addField(`Link`, "https://www.nationstates.net/region=" + name)
 
-    .addField(`Tags`, obj.REGION.TAGS[0].TAG)
-
+   
 	.addField(`Tags`, obj.REGION.TAGS[0].TAG)
 
       .setFooter(`Generated on ${date} at ${time}`)
@@ -91,7 +90,7 @@ bot.on("message", msg => {
       .setTitle(`Region Info for ${obj.REGION.NAME}`)
       .setDescription(`wew lad`)
       .setThumbnail(`${obj.REGION.FLAG}`)
-      .addField('Embassies', obj.REGION.TAGS[0].EMBASSY)
+      .addField('Embassies', obj.REGION.EMBASSIES[0].EMBASSY)
       .setFooter(`Generated on ${date} at ${time}`)
       msg.channel.sendEmbed(embed);
     })
