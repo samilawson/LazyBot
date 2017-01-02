@@ -6,14 +6,16 @@ const fs = require("fs");
 var request = require('superagent');
 var parseString = require('xml2js').parseString;
 var xml2js = require('xml2js');
+const moment = require('moment');
+require("moment-duration-format");
 var TOKEN = process.env.TOKEN;
 bot.on("ready", () => {
-   	bot.user.setGame(".help | .invite");
-  	console.log("I am ready!");
+    bot.user.setGame(".help | .invite");
+    console.log("I am ready!");
 });
 
 bot.on("message", msg => {
-	if (msg.content.startsWith(prefix + "nat")){
+    if (msg.content.startsWith(prefix + "nat")){
         const embed = new Discord.RichEmbed();
   const args = msg.content.split(" ").slice(1);
   const name = args.join("_");
@@ -21,13 +23,13 @@ bot.on("message", msg => {
   const now = new Date();
   const date = moment(now).format("MMM/DD/YYYY"); //This is better. 
   const time = moment(now).format("H:mm:ss");
-  const result = request.get(`https://www.nationstates.net/cgi-bin/api.cgi?nation=${name}&q=gdp+population+region+wa+flag+fullname+influence+census;mode=score;scale=66`);
+  const result = request.get(`https://www.nationstates.net/cgi-bin/api.cgi?nation=${name}&q=name+gdp+population+region+wa+flag+fullname+influence+census;mode=score;scale=66`);
 
   result.then((res) => {
     parseString(res.text, (err, obj) => {
       embed.setColor(3447003)
-        .setAuthor(args, `${obj.NATION.FLAG}`)
-        .setTitle(`Nation Info for ${args}`)
+        .setAuthor(`${obj.NATION.NAME}`, `${obj.NATION.FLAG}`)
+        .setTitle(`Nation Info for ${obj.NATION.NAME}`)
         .setDescription(obj.NATION.FULLNAME)
         .setThumbnail(`${obj.NATION.FLAG}`)
         .addField('Region', obj.NATION.REGION, true)
@@ -36,6 +38,7 @@ bot.on("message", msg => {
         .addField('Economy', "$" + obj.NATION.GDP, true)
         .addField('WA Status?', obj.NATION.UNSTATUS, true)
         .addField('Endorsement Count', Math.round(obj.NATION.CENSUS[0].SCALE[0].SCORE), true)
+    .addField('Link', "http://www.nationstates.net/nation=" + name)
         .setFooter(`Generated on ${date} at ${time}. For more extensive information, type .more <nation name>`)
       msg.channel.sendEmbed(embed);
     })
@@ -59,12 +62,35 @@ bot.on("message", msg => {
       .addField(`Number of Nations`, obj.REGION.NUMNATIONS, true)
       .addField(`Power`, obj.REGION.POWER, true)
       .addField(`WA Delegate`, obj.REGION.DELEGATE, true)
-      //.addField(`Tags`, obj.REGION.TAGS.TAG)
+      .addField(`Link`, "https://www.nationstates.net/region=" + name)
+    .addField(`Tags`, obj.REGION.TAGS[0].TAG)
       .setFooter(`Generated on ${date} at ${time}`)
       msg.channel.sendEmbed(embed);
     })
   })
-} else if(msg.content.startsWith(prefix + "world")){
+} else if(msg.channel.startsWith(prefix + "embassies")){
+  const embed = new Discord.RichEmbed();
+  const args = msg.content.split(" ").slice(1);
+  const name = args.join("_");
+  const now = new Date();
+  const date = moment(now).format("MMM/DD/YYYY");
+  const time = moment(now).format("H:mm:ss");
+  const result = request.get(`https://nationstates.net/cgi-bin/api.cgi?region=${name}&q=name+flag+embassies`);
+  result.then((res) => {
+    parseString(res.text, (err, obj) => {
+      embed.setColor(3447003)
+      .setAuthor(obj.REGION.NAME, `${obj.REGION.FLAG}`)
+      .setTitle(`Region Info for ${obj.REGION.NAME}`)
+      .setDescription(`wew lad`)
+      .setThumbnail(`${obj.REGION.FLAG}`)
+      .addField('Embassies', obj.REGION.TAGS[0].EMBASSY)
+      .setFooter(`Generated on ${date} at ${time}`)
+      msg.channel.sendEmbed(embed);
+    })
+  })
+
+}
+else if(msg.content.startsWith(prefix + "world")){
   const embed = new Discord.RichEmbed();
   const now = new Date();
   const date = moment(now).format("MMM/DD/YYYY");
@@ -92,11 +118,11 @@ bot.on("message", msg => {
   const now = new Date();
   const date = moment(now).format("MMM/DD/YYYY");
   const time = moment(now).format("H:mm:ss");
-  const result = request.get(`https://nationstates.net/cgi-bin/api.cgi?nation=${name}&q=govtpriority+income+lastactivity+leader+tax+capital+category+flag+fullname+majorindustry`);
+  const result = request.get(`https://nationstates.net/cgi-bin/api.cgi?nation=${name}&q=name+govtpriority+income+lastactivity+leader+tax+capital+category+flag+fullname+majorindustry`);
   result.then((res) => {
     parseString(res.text, (err, obj) => {
       embed.setColor(3447003)
-      .setAuthor(args, `${obj.NATION.FLAG}`)
+      .setAuthor(`${obj.NATION.NAME}`, `${obj.NATION.FLAG}`)
       .setTitle('More Nation Stats')
       .setDescription(`${obj.NATION.FULLNAME}`)
       .setThumbnail(`${obj.NATION.FLAG}`)
@@ -115,38 +141,38 @@ bot.on("message", msg => {
 }
        
      else if(msg.content.startsWith(prefix + "help")){
-    	msg.channel.sendMessage("```" + "LazyBot Commands: \n .nat <nation name> gives a bunch of nation info, type .more <nation name> for more nation info \n .reg <region name> gives info about a region \n .desc <nation name> \n .rphelp brings up a list of RP commands \n .invite sends the url to invite this bot to your server \n .testserv sends an invite to my Bot HQ \n .suggest Leave me a suggestion! \n" + "```" );
+        msg.channel.sendMessage("```" + "LazyBot Commands: \n .nat <nation name> gives a bunch of nation info, type .more <nation name> for more nation info \n .reg <region name> gives info about a region \n .desc <nation name> \n .rphelp brings up a list of RP commands \n .invite sends the url to invite this bot to your server \n .testserv sends an invite to my Bot HQ \n .suggest Leave me a suggestion! \n .embassies <region name> gives a list of embassies \n" + "```" );
     } else if(msg.content === "RIP"){
-    	msg.channel.sendMessage("Yeah, RIP");
+        msg.channel.sendMessage("Yeah, RIP");
     } else if(msg.content === "Hail Satan"){
-    	msg.channel.sendFile("https://media2.giphy.com/media/77f2SrKYNOnYs/200_s.gif");
+        msg.channel.sendFile("https://media2.giphy.com/media/77f2SrKYNOnYs/200_s.gif");
     } else if(msg.content.startsWith(prefix + "info")){
-    	msg.channel.sendMessage("```This bot is run by Melorian Republic, and was written in Javascript!```");
+        msg.channel.sendMessage("```This bot is run by Melorian Republic, and was written in Javascript!```");
     } else if(msg.content.startsWith(prefix + "industry")){
-    	let inputfour = msg.content.split(" ").slice(1);
-    	var namefive = inputfour.join("_");
-    	console.log(namefive);
-    	request.get('https://www.nationstates.net/cgi-bin/api.cgi?nation=' + namefive + '&q=majorindustry').end((err, res) => {
-    		console.log(res.text);
-    		var xml = res.text;
-    		var stripped = xml.replace(/(<([^>]+)>)/ig,"");
-    		console.log(stripped);
-    		msg.channel.sendMessage(namefive + "'s Major Industry: " + stripped);
-    	});
+        let inputfour = msg.content.split(" ").slice(1);
+        var namefive = inputfour.join("_");
+        console.log(namefive);
+        request.get('https://www.nationstates.net/cgi-bin/api.cgi?nation=' + namefive + '&q=majorindustry').end((err, res) => {
+            console.log(res.text);
+            var xml = res.text;
+            var stripped = xml.replace(/(<([^>]+)>)/ig,"");
+            console.log(stripped);
+            msg.channel.sendMessage(namefive + "'s Major Industry: " + stripped);
+        });
     } 
     else if(msg.content.startsWith(prefix + "desc")){
-    	let input = msg.content.split(" ").slice(1);
-    	var name = input.join("_");
-    	request.get('https://www.nationstates.net/cgi-bin/api.cgi?nation=' + name + '&q=industrydesc').end((err, res) => {
-    		console.log(res.text);
-    		var xml = res.text;
-    		var stripped = xml.replace(/(<([^>]+)>)/ig,"");
-    		console.log(stripped);
-    		msg.channel.sendMessage(stripped);
-    	});
+        let input = msg.content.split(" ").slice(1);
+        var name = input.join("_");
+        request.get('https://www.nationstates.net/cgi-bin/api.cgi?nation=' + name + '&q=industrydesc').end((err, res) => {
+            console.log(res.text);
+            var xml = res.text;
+            var stripped = xml.replace(/(<([^>]+)>)/ig,"");
+            console.log(stripped);
+            msg.channel.sendMessage(stripped);
+        });
     } else if (msg.content.startsWith(prefix + "TVT")){
-    	let number = msg.guild.roles.find("name", "TVT Partisan").members.size;
-    	msg.channel.sendMessage("There are " + number + " TVT Partisans here!");
+        let number = msg.guild.roles.find("name", "TVT Partisan").members.size;
+        msg.channel.sendMessage("There are " + number + " TVT Partisans here!");
     }  else if(msg.content=== (prefix + "rollone")){
         var diceOne  = Math.floor( Math.random() * 20) + 1;
         console.log(diceOne);
@@ -191,7 +217,7 @@ bot.on("message", msg => {
     } else if(msg.content === (prefix + "mods")){
         msg.channel.sendMesage("```" + "Our mods: Siberia, Vetelo, Melorian Republic, NuclearWaste123, and New Vapaus!" + "```");
     } else if(msg.content === (prefix + "rphelp")){
-        msg.channel.sendMessage("```\nList of RP Commands:\n .rollone \n .rollTwo \n" + "```");
+        msg.channel.sendMessage("```\nList of RP Commands:\n .rollone \n .rolltwo \n" + "```");
     } else if(msg.content.startsWith(prefix + "invite")){
         msg.reply("Invite me to your server! https://discordapp.com/oauth2/authorize?client_id=259784917339078656&scope=bot&permissions=0");
     } else if(msg.content.startsWith(prefix + "testserv")){
@@ -202,6 +228,7 @@ bot.on("message", msg => {
         var output = args.join(" ");
         console.log(output);
         bot.channels.get("264845260339806211").sendMessage("```\n" + output + "\n```");
+    msg.channel.sendMessage("Thank you for your suggestion!");
     } 
  
 });
@@ -220,7 +247,7 @@ bot.on('guildCreate', Guild => {
 
 bot.channels.get("263423925017378816").sendMessage(toSend);
 });
-<<<<<<< HEAD
+
 
 bot.on('guildMemberAdd', member => {
     var msg;
@@ -233,6 +260,5 @@ bot.on('guildMemberRemove', member => {
     bot.channels.get("264792406694559745").sendMessage(msg);
 });
 
-=======
->>>>>>> origin/master
+
 bot.login(TOKEN);
