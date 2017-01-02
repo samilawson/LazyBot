@@ -63,6 +63,7 @@ bot.on("message", msg => {
       .addField(`Power`, obj.REGION.POWER, true)
       .addField(`WA Delegate`, obj.REGION.DELEGATE, true)
       .addField(`Link`, "https://www.nationstates.net/region=" + name)
+	.addField(`Tags`, obj.REGION.TAGS[0].TAG)
       .setFooter(`Generated on ${date} at ${time}`)
       msg.channel.sendEmbed(embed);
     })
