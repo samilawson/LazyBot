@@ -195,7 +195,7 @@ bot.on("message", msg => {
     } else if(msg.content === (prefix + "mods")){
         msg.channel.sendMesage("```" + "Our mods: Siberia, Vetelo, Melorian Republic, NuclearWaste123, and New Vapaus!" + "```");
     } else if(msg.content === (prefix + "rphelp")){
-        msg.channel.sendMessage("```\nList of RP Commands:\n .rollone \n .rollTwo \n" + "```");
+        msg.channel.sendMessage("```\nList of RP Commands:\n .rollone \n .rolltwo \n" + "```");
     } else if(msg.content.startsWith(prefix + "invite")){
         msg.reply("Invite me to your server! https://discordapp.com/oauth2/authorize?client_id=259784917339078656&scope=bot&permissions=0");
     } else if(msg.content.startsWith(prefix + "testserv")){
