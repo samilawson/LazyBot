@@ -76,7 +76,7 @@ bot.on("message", msg => {
       msg.channel.sendEmbed(embed);
     })
   })
-} else if(msg.channel.startsWith(prefix + "embassies")){
+} else if(msg.content.startsWith(prefix + "embassies")){
   const embed = new Discord.RichEmbed();
   const args = msg.content.split(" ").slice(1);
   const name = args.join("_");
