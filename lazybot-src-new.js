@@ -206,6 +206,7 @@ bot.on("message", msg => {
         var output = args.join(" ");
         console.log(output);
         bot.channels.get("264845260339806211").sendMessage("```\n" + output + "\n```");
+	msg.channel.sendMessage("Thank you for your suggestion!");
     } 
  
 });
