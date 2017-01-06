@@ -261,7 +261,7 @@ bot.on('guildDelete', Guild => {
 	let toSend = [
 		"\:x: I've been removed from: " + Guild.name,
 		"Guild ID: " + Guild.id,
-Guild Members Count: " + Guild.memberCount,
+"Guild Members Count: " + Guild.memberCount,
   "Guild Region: " + Guild.region
 ];
 
