@@ -257,8 +257,16 @@ bot.on('guildCreate', Guild => {
 
 bot.channels.get("263423925017378816").sendMessage(toSend);
 });
+bot.on('guildDelete', Guild => {
+	let toSend = [
+		"\:x: I've been removed from: " + Guild.name,
+		"Guild ID: " + Guild.id,
+Guild Members Count: " + Guild.memberCount,
+  "Guild Region: " + Guild.region
+];
 
-
+bot.channels.get("263423925017378816").sendMessage(toSend);
+});
 bot.on('guildMemberAdd', member => {
     var msg;
     msg = `Welcome ${member} to ${member.guild.name}`;
