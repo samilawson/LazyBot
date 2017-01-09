@@ -41,13 +41,14 @@ bot.on("message", msg => {
         .addField('Link', "http://www.nationstates.net/nation=" + name)
         .setFooter(`Generated on ${date} at ${time}. For more extensive information, type .more <nation name>`)
       msg.channel.sendEmbed(embed);
-      .catch((err) => {
+      
+    })
+  })
+        .catch((err) => {
         if(err){
           msg.channel.sendMessage("Invalid Nation");
         }
       })
-    })
-  })
 } else if(msg.content.startsWith(prefix + "reg")){
   const embed = new Discord.RichEmbed();
   const args = msg.content.split(" ").slice(1);
