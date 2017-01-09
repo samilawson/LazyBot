@@ -164,7 +164,7 @@ else if(msg.content.startsWith(prefix + "world")){
          .setFooter(`Generated on ${date} at ${time}`)
         msg.channel.sendEmbed(embed);
     }else if(msg.content.startsWith(prefix + "help")){
-        msg.channel.sendMessage("```" + "LazyBot Commands: \n .nat <nation name> gives a bunch of nation info, type .more <nation name> for more nation info \n .reg <region name> gives info about a region \n .desc <nation name> \n .rphelp brings up a list of RP commands \n .invite sends the url to invite this bot to your server \n .testserv sends an invite to my Bot HQ \n .suggest Leave me a suggestion! \n .embassies <region name> gives a list of embassies \n" + "```" );
+        msg.channel.sendMessage("```" + "LazyBot Commands: \n .nat <nation name> gives a bunch of nation info, type .more <nation name> for more nation info \n .reg <region name> gives info about a region \n .desc <nation name> \n .rphelp brings up a list of RP commands \n .invite sends the url to invite this bot to your server \n .testserv sends an invite to my Bot HQ \n .suggest Leave me a suggestion! \n .embassies <region name> gives a list of embassies \n .stats \n .ping \n .wiki <input> \n" + "```" );
     } else if(msg.content === "RIP"){
         msg.channel.sendMessage("Yeah, RIP");
     } else if(msg.content === "Hail Satan"){
@@ -260,8 +260,10 @@ else if(msg.content.startsWith(prefix + "world")){
         message.edit( `\:ping_pong: Pong! ( took: ${ message.createdTimestamp - msg.createdTimestamp } ms )` );
         }
     );
-}
- 
+} else if(msg.content.startsWith(prefix + "wiki")){
+  const args = msg.content.split(" ").slice(1);
+const name = args.join("_");
+ msg.channel.sendMessage("\:book: https://en.wikipedia.org/wiki/ " + name + "\:book:");
 });
 
 process.on("unhandledRejection", err => {
