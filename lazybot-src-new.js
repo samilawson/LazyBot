@@ -38,11 +38,7 @@ bot.on("message", msg => {
         .addField('Economy', "$" + obj.NATION.GDP, true)
         .addField('WA Status?', obj.NATION.UNSTATUS, true)
         .addField('Endorsement Count', Math.round(obj.NATION.CENSUS[0].SCALE[0].SCORE), true)
-
-    .addField('Link', "http://www.nationstates.net/nation=" + name)
-
 	.addField('Link', "http://www.nationstates.net/nation=" + name)
-
         .setFooter(`Generated on ${date} at ${time}. For more extensive information, type .more <nation name>`)
       msg.channel.sendEmbed(embed);
     })
@@ -67,10 +63,7 @@ bot.on("message", msg => {
       .addField(`Power`, obj.REGION.POWER, true)
       .addField(`WA Delegate`, obj.REGION.DELEGATE, true)
       .addField(`Link`, "https://www.nationstates.net/region=" + name)
-
-   
 	.addField(`Tags`, obj.REGION.TAGS[0].TAG)
-
       .setFooter(`Generated on ${date} at ${time}`)
       msg.channel.sendEmbed(embed);
     })
@@ -236,7 +229,7 @@ else if(msg.content.startsWith(prefix + "world")){
         console.log(output);
         bot.channels.get("264845260339806211").sendMessage("```\n" + output + "\n```");
 
-    msg.channel.sendMessage("Thank you for your suggestion!");
+   
 
 	msg.channel.sendMessage("Thank you for your suggestion!");
     } 
