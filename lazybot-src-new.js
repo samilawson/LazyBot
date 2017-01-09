@@ -146,7 +146,24 @@ else if(msg.content.startsWith(prefix + "world")){
   })
 }
        
-     else if(msg.content.startsWith(prefix + "help")){
+    else if(msg.content.startsWith(prefix + "stats")){
+        const embed = new Discord.RichEmbed();
+         const now = new Date();
+         const date = moment(now).format("MMM/DD/YYYY");
+         const time = moment(now).format("H:mm:ss");
+        const duration = moment.duration(bot.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
+        embed.setColor(3447003)
+        .setAuthor("LazyBot", `${bot.user.avatarURL}`)
+        .setTitle("LazyBot Stats")
+        .setDescription("Look ma, no hands!")
+        .setThumbnail(`${bot.user.avatarURL}`)
+        .addField(`❯ Uptime`, `${duration}`, true)
+        .addField(`❯ Servers`, `${bot.guilds.size.toLocaleString()}`, true)
+        .addField(`❯ Channels`, `${bot.channels.size.toLocaleString()}`, true)
+        .addField(`❯ Users`, `${bot.users.size.toLocaleString()}`, true)
+         .setFooter(`Generated on ${date} at ${time}`)
+        msg.channel.sendEmbed(embed);
+    }else if(msg.content.startsWith(prefix + "help")){
         msg.channel.sendMessage("```" + "LazyBot Commands: \n .nat <nation name> gives a bunch of nation info, type .more <nation name> for more nation info \n .reg <region name> gives info about a region \n .desc <nation name> \n .rphelp brings up a list of RP commands \n .invite sends the url to invite this bot to your server \n .testserv sends an invite to my Bot HQ \n .suggest Leave me a suggestion! \n .embassies <region name> gives a list of embassies \n" + "```" );
     } else if(msg.content === "RIP"){
         msg.channel.sendMessage("Yeah, RIP");
@@ -238,7 +255,12 @@ else if(msg.content.startsWith(prefix + "world")){
    
 
   msg.channel.sendMessage("Thank you for your suggestion!");
-    } 
+    } else if(msg.content.startsWith(prefix + "ping")){
+        msg.channel.sendMessage( 'Ping' ).then( message => {
+        message.edit( `\:ping_pong: Pong! ( took: ${ message.createdTimestamp - msg.createdTimestamp } ms )` );
+        }
+    );
+}
  
 });
 
