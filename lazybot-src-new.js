@@ -46,7 +46,7 @@ bot.on("message", msg => {
   })
         .catch((err) => {
         if(err){
-          msg.channel.sendMessage("\:x: " +  `Error: Invalid Nation`);
+          msg.channel.sendMessage("\:x: " +  "`" + "Error: Invalid Nation" + "`");
         }
       })
 } else if(msg.content.startsWith(prefix + "reg")){
