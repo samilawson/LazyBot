@@ -263,7 +263,7 @@ else if(msg.content.startsWith(prefix + "world")){
 } else if(msg.content.startsWith(prefix + "wiki")){
   const args = msg.content.split(" ").slice(1);
 const name = args.join("_");
- msg.channel.sendMessage("\:book: https://en.wikipedia.org/wiki/" + name + " \:book:");
+ msg.channel.sendMessage("\:book: | https://en.wikipedia.org/wiki/" + name);
 }
 });
 
