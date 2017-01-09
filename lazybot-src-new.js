@@ -38,9 +38,14 @@ bot.on("message", msg => {
         .addField('Economy', "$" + obj.NATION.GDP, true)
         .addField('WA Status?', obj.NATION.UNSTATUS, true)
         .addField('Endorsement Count', Math.round(obj.NATION.CENSUS[0].SCALE[0].SCORE), true)
-	.addField('Link', "http://www.nationstates.net/nation=" + name)
+        .addField('Link', "http://www.nationstates.net/nation=" + name)
         .setFooter(`Generated on ${date} at ${time}. For more extensive information, type .more <nation name>`)
       msg.channel.sendEmbed(embed);
+      .catch((err) => {
+        if(err){
+          msg.channel.sendMessage("Invalid Nation");
+        }
+      })
     })
   })
 } else if(msg.content.startsWith(prefix + "reg")){
@@ -63,7 +68,7 @@ bot.on("message", msg => {
       .addField(`Power`, obj.REGION.POWER, true)
       .addField(`WA Delegate`, obj.REGION.DELEGATE, true)
       .addField(`Link`, "https://www.nationstates.net/region=" + name)
-	.addField(`Tags`, obj.REGION.TAGS[0].TAG)
+  .addField(`Tags`, obj.REGION.TAGS[0].TAG)
       .setFooter(`Generated on ${date} at ${time}`)
       msg.channel.sendEmbed(embed);
     })
@@ -231,7 +236,7 @@ else if(msg.content.startsWith(prefix + "world")){
 
    
 
-	msg.channel.sendMessage("Thank you for your suggestion!");
+  msg.channel.sendMessage("Thank you for your suggestion!");
     } 
  
 });
@@ -251,9 +256,9 @@ bot.on('guildCreate', Guild => {
 bot.channels.get("263423925017378816").sendMessage(toSend);
 });
 bot.on('guildDelete', Guild => {
-	let toSend = [
-		"\:x: I've been removed from: " + Guild.name,
-		"Guild ID: " + Guild.id,
+  let toSend = [
+    "\:x: I've been removed from: " + Guild.name,
+    "Guild ID: " + Guild.id,
 "Guild Members Count: " + Guild.memberCount,
   "Guild Region: " + Guild.region
 ];
@@ -261,14 +266,16 @@ bot.on('guildDelete', Guild => {
 bot.channels.get("263423925017378816").sendMessage(toSend);
 });
 bot.on('guildMemberAdd', member => {
+  let guild = member.guild;
     var msg;
     msg = `Welcome ${member} to ${member.guild.name}`;
-    bot.channels.get("264792406694559745").sendMessage(msg);
+    guild.defaultChannel.sendMessage(msg);
 });
 bot.on('guildMemberRemove', member => {
+  let guild = member.guild;
     var msg; 
     msg = `See ya later ${member}!`;
-    bot.channels.get("264792406694559745").sendMessage(msg);
+    guild.defaultChannel.sendMessage(msg);
 });
 
 
