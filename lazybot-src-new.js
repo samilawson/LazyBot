@@ -264,6 +264,7 @@ else if(msg.content.startsWith(prefix + "world")){
   const args = msg.content.split(" ").slice(1);
 const name = args.join("_");
  msg.channel.sendMessage("\:book: https://en.wikipedia.org/wiki/ " + name + "\:book:");
+}
 });
 
 process.on("unhandledRejection", err => {
