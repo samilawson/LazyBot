@@ -284,7 +284,6 @@ const name = args.join("_");
       });
   }
 });
-});
 
 process.on("unhandledRejection", err => {
     console.error(`Uncaught Promise Error: \n + ${err.stack}`);
