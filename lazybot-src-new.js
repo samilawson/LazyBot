@@ -171,6 +171,11 @@ else if(msg.content.startsWith(prefix + "world")){
         msg.channel.sendMessage("Yeah, RIP");
     } else if(msg.content === "Hail Satan"){
         msg.channel.sendFile("https://media2.giphy.com/media/77f2SrKYNOnYs/200_s.gif");
+    } else if(msg.content === "Haha long boy"){
+        msg.channel.sendFile("https://cdn.discordapp.com/attachments/219540913959993344/268360510896865281/image.jpg");
+    } else if(msg.content === "dissolve the state"){
+        msg.channel.sendFile("https://cdn.discordapp.com/attachments/219540913959993344/268361037240074240/image.jpg");
+   // } else if(msg.c
     } else if(msg.content.startsWith(prefix + "info")){
         msg.channel.sendMessage("```This bot is run by Melorian Republic, and was written in Javascript!```");
     } else if(msg.content.startsWith(prefix + "industry")){
