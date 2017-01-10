@@ -91,6 +91,7 @@ bot.on("message", msg => {
       .setThumbnail(`${obj.REGION.FLAG}`)
       .addField('Embassies', obj.REGION.EMBASSIES[0].EMBASSY)
       .setFooter(`Generated on ${date} at ${time}`)
+        console.log(embed);
       msg.channel.sendEmbed(embed);
     })
   })
