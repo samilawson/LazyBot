@@ -9,6 +9,7 @@ var xml2js = require('xml2js');
 const moment = require('moment');
 require("moment-duration-format");
 var TOKEN = process.env.TOKEN;
+var yt = require('ytdl-core');
 bot.on("ready", () => {
     bot.user.setGame(`.help .invite | ${bot.guilds.size} Servers!`);
     console.log("I am ready!");
@@ -266,6 +267,23 @@ else if(msg.content.startsWith(prefix + "world")){
 const name = args.join("_");
  msg.channel.sendMessage("\:book: | https://en.wikipedia.org/wiki/" + name);
 }
+  else if (msg.content.startsWith(prefix + 'play')) {
+    const voiceChannel = msg.member.voiceChannel;
+    const args = msg.content.split(" ").splice(1);
+    if (!voiceChannel) {
+      return msg.reply(`Please join a voice channel first!`);
+    }
+    voiceChannel.join()
+      .then(connnection => {
+        let stream = yt(args , {audioonly: true});
+        const dispatcher = connnection.playStream(stream);
+        dispatcher.on('end', () => {
+          voiceChannel.leave();
+           
+        });
+      });
+  }
+});
 });
 
 process.on("unhandledRejection", err => {
