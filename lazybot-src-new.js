@@ -26,7 +26,7 @@ bot.on("message", msg => {
   const result = request.get(`https://www.nationstates.net/cgi-bin/api.cgi?nation=${name}&q=name+gdp+population+region+wa+flag+fullname+influence+census;mode=score;scale=66`);
 
   result.then((res) => {
-    parseString(res.text, {ignoreAttrs : false, mergeAttrs : true}, (err, obj) => {
+    parseString(res.text, (err, obj) => {
       embed.setColor(3447003)
         .setAuthor(`${obj.NATION.NAME}`, `${obj.NATION.FLAG}`)
         .setTitle(`Nation Info for ${obj.NATION.NAME}`)
@@ -83,7 +83,7 @@ bot.on("message", msg => {
   const time = moment(now).format("H:mm:ss");
   const result = request.get(`https://nationstates.net/cgi-bin/api.cgi?region=${name}&q=name+flag+embassies`);
   result.then((res) => {
-    parseString(res.text, (err, obj) => {
+    parseString(res.text, {ignoreAttrs : false, mergeAttrs : true}, (err, obj) => {
       embed.setColor(3447003)
       .setAuthor(obj.REGION.NAME, `${obj.REGION.FLAG}`)
       .setTitle(`Region Info for ${obj.REGION.NAME}`)
