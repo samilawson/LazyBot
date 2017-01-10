@@ -83,7 +83,7 @@ bot.on("message", msg => {
   const time = moment(now).format("H:mm:ss");
   const result = request.get(`https://nationstates.net/cgi-bin/api.cgi?region=${name}&q=name+flag+embassies`);
   result.then((res) => {
-    parseString(res.text, {ignoreAttrs : false, mergeAttrs : true}, (err, obj) => {
+    parseString(res.text, {ignoreAttrs : true, mergeAttrs : true}, (err, obj) => {
       embed.setColor(3447003)
       .setAuthor(obj.REGION.NAME, `${obj.REGION.FLAG}`)
       .setTitle(`Region Info for ${obj.REGION.NAME}`)
