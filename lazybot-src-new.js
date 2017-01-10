@@ -10,7 +10,7 @@ const moment = require('moment');
 require("moment-duration-format");
 var TOKEN = process.env.TOKEN;
 bot.on("ready", () => {
-    bot.user.setGame(`.help | .invite | ${bot.guilds.size.toLocaleString()}`);
+    bot.user.setGame(`.help | .invite | ${bot.guilds.size.toLocaleString()} servers!`);
     console.log("I am ready!");
 });
 
