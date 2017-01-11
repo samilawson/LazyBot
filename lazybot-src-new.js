@@ -302,8 +302,6 @@ const name = args.join("_");
         });
       });
   } else if(msg.content.startsWith(prefix + "funny")){
-  if(msg.author.id != "213251218154192896") return;
-	msg.delete();
 	const max = 4462;
     msg.channel.sendMessage('http://explosm.net/comics/' + (Math.floor(Math.random()* max) + 1));
 }
