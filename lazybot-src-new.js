@@ -159,6 +159,8 @@ else if(msg.content.startsWith(prefix + "world")){
         .setTitle("LazyBot Stats")
         .setDescription("Look ma, no hands!")
         .setThumbnail(`${bot.user.avatarURL}`)
+        .addField(`❯ Info`, `By FirstComrade17#6842`, true)
+        .addField(`❯ Lib`, `Discord.js`, true)
         .addField(`❯ Uptime`, `${duration}`, true)
         .addField(`❯ Servers`, `${bot.guilds.size.toLocaleString()}`, true)
         .addField(`❯ Channels`, `${bot.channels.size.toLocaleString()}`, true)
@@ -175,10 +177,15 @@ else if(msg.content.startsWith(prefix + "world")){
         msg.channel.sendFile("https://cdn.discordapp.com/attachments/219540913959993344/268360510896865281/image.jpg");
     } else if(msg.content === "dissolve the state"){
         msg.channel.sendFile("https://cdn.discordapp.com/attachments/219540913959993344/268361037240074240/image.jpg");
-   // } else if(msg.c
-    } else if(msg.content.startsWith(prefix + "info")){
-        msg.channel.sendMessage("```This bot is run by Melorian Republic, and was written in Javascript!```");
-    } else if(msg.content.startsWith(prefix + "industry")){
+    } else if(msg.content === "Mother Prussia"){
+        msg.channel.sendFile("https://cdn.discordapp.com/attachments/219540913959993344/268361057607614465/image.jpg");
+    } else if(msg.content === "daddy dab"){
+        msg.channel.sendFile("https://cdn.discordapp.com/attachments/219540913959993344/268361126243205121/image.jpg");
+    } else if(msg.content === "catching mexicans"){
+        msg.channel.sendFile("https://cdn.discordapp.com/attachments/219540913959993344/268520835826974720/image.png");
+    } //else if(msg.content.startsWith(prefix + "info")){
+        //msg.channel.sendMessage("```This bot is run by Melorian Republic, and was written in Javascript!```");
+     else if(msg.content.startsWith(prefix + "industry")){
         let inputfour = msg.content.split(" ").slice(1);
         var namefive = inputfour.join("_");
         console.log(namefive);
