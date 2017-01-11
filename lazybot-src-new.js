@@ -154,10 +154,15 @@ else if(msg.content.startsWith(prefix + "world")){
          const date = moment(now).format("MMM/DD/YYYY");
          const time = moment(now).format("H:mm:ss");
         const duration = moment.duration(bot.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
+        var quotes = [
+    'Look ma! no hands', 'wew lad', 'never gonna give you up', 'REEEEEEEEEEEEEEEE', 'You\'re terminated!'
+    ]
+    
+    const randomNumber = Math.floor(Math.random() * (quotes.length));
         embed.setColor(3447003)
         .setAuthor("LazyBot", `${bot.user.avatarURL}`)
         .setTitle("LazyBot Stats")
-        .setDescription("Look ma, no hands!")
+        .setDescription(`${quotes[randomNumber]}`)
         .setThumbnail(`${bot.user.avatarURL}`)
         .addField(`❯ Info`, `By FirstComrade17#6842`, true)
         .addField(`❯ Lib`, `Discord.js`, true)
