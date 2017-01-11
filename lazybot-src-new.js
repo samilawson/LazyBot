@@ -166,14 +166,16 @@ else if(msg.content.startsWith(prefix + "world")){
         .setThumbnail(`${bot.user.avatarURL}`)
         .addField(`❯ Info`, `By FirstComrade17#6842`, true)
         .addField(`❯ Lib`, `Discord.js`, true)
+        .addField(`❯ Bot Version`, `2.0`, true)
         .addField(`❯ Uptime`, `${duration}`, true)
+        .addField(`❯ Memory`, `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`, true)
         .addField(`❯ Servers`, `${bot.guilds.size.toLocaleString()}`, true)
         .addField(`❯ Channels`, `${bot.channels.size.toLocaleString()}`, true)
         .addField(`❯ Users`, `${bot.users.size.toLocaleString()}`, true)
          .setFooter(`Generated on ${date} at ${time}`)
         msg.channel.sendEmbed(embed);
     }else if(msg.content.startsWith(prefix + "help")){
-        msg.channel.sendMessage("```" + "LazyBot Commands: \n .nat <nation name> gives a bunch of nation info, type .more <nation name> for more nation info \n .reg <region name> gives info about a region \n .desc <nation name> \n .rphelp brings up a list of RP commands \n .invite sends the url to invite this bot to your server \n .testserv sends an invite to my Bot HQ \n .suggest Leave me a suggestion! \n .embassies <region name> gives a list of embassies \n .stats \n .ping \n .wiki <input> \n" + "```" );
+        msg.channel.sendMessage("```" + "LazyBot Commands: \n .nat <nation name> gives a bunch of nation info, type .more <nation name> for more nation info \n .reg <region name> gives info about a region \n .desc <nation name> \n .rphelp brings up a list of RP commands \n .invite sends the url to invite this bot to your server \n .testserv sends an invite to my Bot HQ \n .suggest Leave me a suggestion! \n .embassies <region name> gives a list of embassies \n .stats \n .ping \n .wiki <input> \n .funny \n" + "```" );
     } else if(msg.content === "RIP"){
         msg.channel.sendMessage("Yeah, RIP");
     } else if(msg.content === "Hail Satan"){
@@ -299,7 +301,12 @@ const name = args.join("_");
            
         });
       });
-  }
+  } else if(msg.content.startsWith(prefix + "funny")){
+  if(msg.author.id != "213251218154192896") return;
+	msg.delete();
+	const max = 4462;
+    msg.channel.sendMessage('http://explosm.net/comics/' + (Math.floor(Math.random()* max) + 1));
+}
 });
 
 process.on("unhandledRejection", err => {
