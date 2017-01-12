@@ -1,7 +1,7 @@
 //LazyBot, by Melorian Republic
 const Discord = require("discord.js");
 const bot = new Discord.Client();
-const prefix = ".";
+const prefix = "//";
 const fs = require("fs");
 var request = require('superagent');
 var parseString = require('xml2js').parseString;
@@ -40,7 +40,7 @@ bot.on("message", msg => {
         .addField('WA Status?', obj.NATION.UNSTATUS, true)
         .addField('Endorsement Count', Math.round(obj.NATION.CENSUS[0].SCALE[0].SCORE), true)
         .addField('Link', "http://www.nationstates.net/nation=" + name)
-        .setFooter(`Generated on ${date} at ${time}. For more extensive information, type .more <nation name>`)
+        .setFooter(`Generated on ${date} at ${time}. For more extensive information, type //more <nation name>`)
       msg.channel.sendEmbed(embed);
       
     })
@@ -75,7 +75,12 @@ bot.on("message", msg => {
       msg.channel.sendEmbed(embed);
     })
   })
-} else if(msg.content.startsWith(prefix + "embassies")){
+	 .catch((err) => {
+        if(err){
+          msg.channel.sendMessage("\:x: " +  "`" + "Error: Invalid Region" + "`");
+        }
+      })
+} else if(msg.content.startsWith(prefix + "emb")){
   const embed = new Discord.RichEmbed();
   const args = msg.content.split(" ").slice(1);
   const name = args.join("_");
@@ -96,7 +101,11 @@ bot.on("message", msg => {
       msg.channel.sendEmbed(embed);
     })
   })
-
+ .catch((err) => {
+        if(err){
+          msg.channel.sendMessage("\:x: " +  "`" + "Error: Invalid Region" + "`");
+        }
+      })
 }
 else if(msg.content.startsWith(prefix + "world")){
   const embed = new Discord.RichEmbed();
@@ -146,6 +155,11 @@ else if(msg.content.startsWith(prefix + "world")){
       msg.channel.sendEmbed(embed);
     })
   })
+	 .catch((err) => {
+        if(err){
+          msg.channel.sendMessage("\:x: " +  "`" + "Error: Invalid Nation" + "`");
+        }
+      })
 }
        
     else if(msg.content.startsWith(prefix + "stats")){
@@ -175,7 +189,8 @@ else if(msg.content.startsWith(prefix + "world")){
          .setFooter(`Generated on ${date} at ${time}`)
         msg.channel.sendEmbed(embed);
     }else if(msg.content.startsWith(prefix + "help")){
-        msg.channel.sendMessage("```" + "LazyBot Commands: \n .nat <nation name> gives a bunch of nation info, type .more <nation name> for more nation info \n .reg <region name> gives info about a region \n .desc <nation name> \n .rphelp brings up a list of RP commands \n .invite sends the url to invite this bot to your server \n .testserv sends an invite to my Bot HQ \n .suggest Leave me a suggestion! \n .embassies <region name> gives a list of embassies \n .stats \n .ping \n .wiki <input> \n .funny \n" + "```" );
+        msg.author.sendMessage("__**LazyBot Commands**__ \n \n **//nat <nation name>** gives a bunch of nation info, type **//more <nation name>** for more nation info \n **//reg <region name>** gives info about a region \n **//desc <nation name>** gives a description of the nation's economy \n **//rphelp** brings up a list of RP commands \n **//invite** sends the url to invite this bot to your server \n **//testserv** sends an invite to my Bot HQ \n **//suggest** leave me a suggestion! \n **//emb <region name>** gives a list of embassies \n **//stats** gives all kinds of stats \n **//ping** Pong! \n **//wiki <input>** gives the wikipedia page of the input if it is valid \n **//funny** gives a random Cyanide & Happiness Comic \n **//serverinfo** gives info about the server \n Be on the lookout for easter eggs!");
+	    msg.reply("Help has arrived! Check your DMs!");
     } else if(msg.content === "RIP"){
         msg.channel.sendMessage("Yeah, RIP");
     } else if(msg.content === "Hail Satan"){
@@ -304,6 +319,41 @@ const name = args.join("_");
   } else if(msg.content.startsWith(prefix + "funny")){
 	const max = 4462;
     msg.channel.sendMessage('http://explosm.net/comics/' + (Math.floor(Math.random()* max) + 1));
+} else if(msg.content.startsWith(prefix + "serverinfo")){
+    let name = msg.guild.id;
+    
+    console.log(name);
+    let embed = new Discord.RichEmbed();
+    var emojis = bot.guilds.get(name).emojis.map(e => e).join(": ");
+    if(emojis === undefined){
+      emojis = "\u200b";
+    }
+    const now = new Date();
+  const date = moment(now).format("MMM/DD/YYYY");
+  const time = moment(now).format("H:mm:ss");
+    embed
+    .setColor(3447003)
+    .setAuthor(`${bot.guilds.get(name).name}`, bot.guilds.get(name).iconURL)
+    .setTitle(`${bot.guilds.get(name).name}` , "Server Info")
+    .setDescription("wew")
+    .setThumbnail(bot.guilds.get(name).iconURL)
+    .addField(`❯ Server ID`, name, true)
+    .addField(`❯ Owner`, `${bot.guilds.get(name).owner}`, true)
+    .addField(`❯ Region`, `${bot.guilds.get(name).region}`, true)
+    .addField(`❯ Created On`, `${bot.guilds.get(name).createdAt}`, true)
+    .addField(`❯ Member Count`, `${bot.guilds.get(name).memberCount}`, true)
+    .addField(`❯ Default Channel`, `${bot.guilds.get(name).defaultChannel}`, true)
+    .addField(`❯ Channels`, `${bot.guilds.get(name).channels.map(c => c.name).join(", ")}`)
+    .addField(`❯ Roles`, `${bot.guilds.get(name).roles.map(r => r.name).join(", ")}`)
+    .setFooter(`Generated on ` + date + ` at ` + time)
+    msg.channel.sendEmbed(embed);
+  
+} else if(msg.content.startsWith(prefix + "announce")){
+  if(msg.author.id != "213251218154192896") return;
+  let args = msg.content.split(" ").splice(1);
+  var announcement = args.join(" ");
+  console.log(announcement);
+  bot.guilds.forEach(guild => { guild.defaultChannel.sendMessage(announcement) });
 }
 });
 
