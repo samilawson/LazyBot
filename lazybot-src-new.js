@@ -11,7 +11,7 @@ require("moment-duration-format");
 var TOKEN = process.env.TOKEN;
 var yt = require('ytdl-core');
 bot.on("ready", () => {
-    bot.user.setGame(`.help .invite | ${bot.guilds.size} Servers!`);
+    bot.user.setGame(`//help //invite | ${bot.guilds.size} Servers!`);
     console.log("I am ready!");
 });
 
