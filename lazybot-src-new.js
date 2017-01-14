@@ -490,12 +490,12 @@ bot.on('guildMemberAdd', member => {
   
     settings.find({ name: guildid }, callback);
     var searched = callback.search("enabled");
-    if(!searched = true){
-        console.log("Welcome message disabled");
-    } else {
+    if(searched === 7){
     var msg;
     msg = `Welcome ${member} to ${member.guild.name}`;
     guild.defaultChannel.sendMessage(msg);
+    } else {
+     console.log("Welcome message disabled!");   
     }
 });
 bot.on('guildMemberRemove', member => {
