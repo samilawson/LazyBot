@@ -358,7 +358,7 @@ const name = args.join("_");
     msg.channel.sendEmbed(embed);
     
   
-} else if(msg.content.startsWith(prefix + "kick")){
+} /* else if(msg.content.startsWith(prefix + "kick")){
 if(!bot.member.hasPermission("KICK_MEMBERS")){
   if (!msg.member.hasPermission("KICK_MEMBERS")) {
    msg.reply("\:x: You do not have permission to do that!");
@@ -371,7 +371,7 @@ if(!bot.member.hasPermission("KICK_MEMBERS")){
 } else {
  msg.reply("\:x: I don't have permission to do that!");	
 }
-} else if(msg.content.startsWith(prefix + "createrole")){
+} */ else if(msg.content.startsWith(prefix + "createrole")){
   if(!msg.member.hasPermission("MANAGE_ROLES")){
     msg.reply("\:x: You do not have permission to do that!");
   } else{
