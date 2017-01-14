@@ -451,7 +451,7 @@ const name = args.join("_");
     let guildid = msg.member.guild.id;
  var query = {'name': guildid + " enabled"};
 newData = guildid + " disabled";
-MyModel.findOneAndUpdate(query, newData, {upsert:true}, function(err, doc){
+settings.findOneAndUpdate(query, newData, {upsert:true}, function(err, doc){
     if (err) return res.send(500, { error: err });
     return res.send("succesfully saved");
 });   
