@@ -359,7 +359,7 @@ const name = args.join("_");
     
   
 } else if(msg.content.startsWith(prefix + "kick")){
-if(!bot.user.hasPermission("KICK_MEMBERS")){
+if(!bot.member.hasPermission("KICK_MEMBERS")){
   if (!msg.member.hasPermission("KICK_MEMBERS")) {
    msg.reply("\:x: You do not have permission to do that!");
   } else {
