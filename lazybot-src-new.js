@@ -1,4 +1,4 @@
-//LazyBot, by Melorian Republic
+//LazyBot, by FirstComrade17
 const Discord = require("discord.js");
 const bot = new Discord.Client();
 const prefix = "//";
@@ -10,23 +10,11 @@ const moment = require('moment');
 require("moment-duration-format");
 var TOKEN = process.env.TOKEN;
 var yt = require('ytdl-core');
-/*var mongoose = require('mongoose');
-mongoose.connect('mongodb://@ds111469.mlab.com:11469/lazybot'); */
 bot.on("ready", () => {
     bot.user.setGame(`//help //invite | ${bot.guilds.size} Servers!`);
     console.log("I am ready!");
 });
-/*
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
-  console.log("We are go!");
-});
-var serverSchema = mongoose.Schema({
-	guildid : String
-});
-var Settings = mongoose.model("Settings", serverSchema);
-*/
+
 bot.on("message", msg => {
     if (msg.content.startsWith(prefix + "nat")){
         const embed = new Discord.RichEmbed();
@@ -87,7 +75,7 @@ bot.on("message", msg => {
       msg.channel.sendEmbed(embed);
     })
   })
-	 .catch((err) => {
+   .catch((err) => {
         if(err){
           msg.channel.sendMessage("\:x: " +  "`" + "Error: Invalid Region" + "`");
         }
@@ -167,7 +155,7 @@ else if(msg.content.startsWith(prefix + "world")){
       msg.channel.sendEmbed(embed);
     })
   })
-	 .catch((err) => {
+   .catch((err) => {
         if(err){
           msg.channel.sendMessage("\:x: " +  "`" + "Error: Invalid Nation" + "`");
         }
@@ -202,7 +190,7 @@ else if(msg.content.startsWith(prefix + "world")){
         msg.channel.sendEmbed(embed);
     }else if(msg.content.startsWith(prefix + "help")){
         msg.author.sendMessage("__**LazyBot Commands**__ \n \n **//nat <nation name>** gives a bunch of nation info, type **//more <nation name>** for more nation info \n **//reg <region name>** gives info about a region \n **//desc <nation name>** gives a description of the nation's economy \n **//rphelp** brings up a list of RP commands \n **//invite** sends the url to invite this bot to your server \n **//testserv** sends an invite to my Bot HQ \n **//suggest** leave me a suggestion! \n **//emb <region name>** gives a list of embassies \n **//stats** gives all kinds of stats \n **//ping** Pong! \n **//wiki <input>** gives the wikipedia page of the input if it is valid \n **//funny** gives a random Cyanide & Happiness Comic \n **//serverinfo** gives info about the server \n **//kick <mention a user>** Kicks the mentioned user, only works if the kicker has kick member perms \n **//addrole <metion user> <role name>** Adds the given role to the mentioned user \n **//removerole <mention user> <role name>** same as //addrole but removes it \n Be on the lookout for easter eggs!");
-	    msg.reply("Help has arrived! Check your DMs!");
+      msg.reply("Help has arrived! Check your DMs!");
     } else if(msg.content === "RIP"){
         msg.channel.sendMessage("Yeah, RIP");
     } else if(msg.content === "Hail Satan"){
@@ -287,9 +275,7 @@ else if(msg.content.startsWith(prefix + "world")){
         console.log(args);
         var output = args.join(" ");
         console.log(output);
-	let guild = msg.member.guild;
-	let name = msg.member.name;
-        bot.channels.get("264845260339806211").sendMessage(name + "submitted a suggestion: ```\n" + output + "\n```\n from " + guild);
+        bot.channels.get("264845260339806211").sendMessage("```\n" + output + "\n```");
 
    
 
@@ -305,7 +291,7 @@ const name = args.join("_");
  msg.channel.sendMessage("\:book: | https://en.wikipedia.org/wiki/" + name);
 }
    else if(msg.content.startsWith(prefix + "funny")){
-	const max = 4462;
+  const max = 4462;
     msg.channel.sendMessage('http://explosm.net/comics/' + (Math.floor(Math.random()* max) + 1));
 } else if(msg.content.startsWith(prefix + "serverinfo")){
     let name = msg.guild.id;
@@ -441,14 +427,7 @@ const name = args.join("_");
     msg.reply("\:white_check_mark: Role " + name + " removed!");
 }
   }
-} /* else if(msg.content.startsWith(prefix + "enablewelcome")){
-	var guildid = msg.member.guild;
-	var enabled = new Settings({guildid: "Enabled"});
-	enabled.save(function(err, enabled){
-	if(err) return console.error(err);	
-	});
-	
-}*/
+}
 });
 
 process.on("unhandledRejection", err => {
