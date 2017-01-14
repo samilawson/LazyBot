@@ -229,9 +229,6 @@ else if(msg.content.startsWith(prefix + "world")){
             console.log(stripped);
             msg.channel.sendMessage(stripped);
         });
-    } else if (msg.content.startsWith(prefix + "TVT")){
-        let number = msg.guild.roles.find("name", "TVT Partisan").members.size;
-        msg.channel.sendMessage("There are " + number + " TVT Partisans here!");
     }  else if(msg.content=== (prefix + "rollone")){
         var diceOne  = Math.floor( Math.random() * 20) + 1;
         console.log(diceOne);
@@ -331,7 +328,7 @@ const name = args.join("_");
   var announcement = args.join(" ");
   console.log(announcement);
   bot.guilds.forEach(guild => { guild.defaultChannel.sendMessage(announcement) });
-} else if(msg.content.startsWith(prefix + "user")){
+} else if(msg.content.startsWith(prefix + "userinfo")){
     
     let embed = new Discord.RichEmbed();
     var name = msg.content.split(" ").splice(1);
@@ -362,6 +359,7 @@ const name = args.join("_");
     
   
 } else if(msg.content.startsWith(prefix + "kick")){
+if(!bot.user.hasPermission("KICK_MEMBERS")){
   if (!msg.member.hasPermission("KICK_MEMBERS")) {
    msg.reply("\:x: You do not have permission to do that!");
   } else {
@@ -369,6 +367,10 @@ const name = args.join("_");
     msg.guild.member(userToKick).kick();
     msg.reply("\:white_check_mark: Kicked!");
   }
+}
+} else {
+ msg.reply("\:x: I don't have permission to do that!");	
+}
 } else if(msg.content.startsWith(prefix + "createrole")){
   if(!msg.member.hasPermission("MANAGE_ROLES")){
     msg.reply("\:x: You do not have permission to do that!");
