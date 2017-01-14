@@ -16,7 +16,7 @@ bot.on("ready", () => {
     bot.user.setGame(`//help //invite | ${bot.guilds.size} Servers!`);
     console.log("I am ready!");
 });
-
+/*
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
@@ -26,6 +26,7 @@ var serverSchema = mongoose.Schema({
 	guildid : String
 });
 var Settings = mongoose.model("Settings", serverSchema);
+*/
 bot.on("message", msg => {
     if (msg.content.startsWith(prefix + "nat")){
         const embed = new Discord.RichEmbed();
@@ -440,14 +441,14 @@ const name = args.join("_");
     msg.reply("\:white_check_mark: Role " + name + " removed!");
 }
   }
-} else if(msg.content.startsWith(prefix + "enablewelcome")){
+} /* else if(msg.content.startsWith(prefix + "enablewelcome")){
 	var guildid = msg.member.guild;
 	var enabled = new Settings({guildid: "Enabled"});
 	enabled.save(function(err, enabled){
 	if(err) return console.error(err);	
 	});
 	
-}
+}*/
 });
 
 process.on("unhandledRejection", err => {
