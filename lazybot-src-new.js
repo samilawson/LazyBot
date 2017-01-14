@@ -23,7 +23,7 @@ db.once('open', function() {
   console.log("We are go!");
 });
 var serverSchema = mongoose.Schema({
-	msg.member.guild : String
+	guildid : String
 });
 var Settings = mongoose.model("Settings", serverSchema);
 bot.on("message", msg => {
