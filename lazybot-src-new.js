@@ -11,7 +11,7 @@ require("moment-duration-format");
 var TOKEN = process.env.TOKEN;
 var yt = require('ytdl-core');
 var mongoose = require('mongoose');
-mongoose.connect(process.env.MONGODB_URI);
+mongoose.connect('mongodb://@ds111469.mlab.com:11469/lazybot');
 bot.on("ready", () => {
     bot.user.setGame(`//help //invite | ${bot.guilds.size} Servers!`);
     console.log("I am ready!");
