@@ -10,11 +10,22 @@ const moment = require('moment');
 require("moment-duration-format");
 var TOKEN = process.env.TOKEN;
 var yt = require('ytdl-core');
+var mongoose = require('mongoose');
+mongoose.connect(process.env.MONGODB_URI);
 bot.on("ready", () => {
     bot.user.setGame(`//help //invite | ${bot.guilds.size} Servers!`);
     console.log("I am ready!");
 });
 
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log("We are go!");
+});
+var serverSchema = mongoose.Schema({
+	msg.member.guild : String
+});
+var Settings = mongoose.model("Settings", serverSchema);
 bot.on("message", msg => {
     if (msg.content.startsWith(prefix + "nat")){
         const embed = new Discord.RichEmbed();
@@ -275,7 +286,9 @@ else if(msg.content.startsWith(prefix + "world")){
         console.log(args);
         var output = args.join(" ");
         console.log(output);
-        bot.channels.get("264845260339806211").sendMessage("```\n" + output + "\n```");
+	let guild = msg.member.guild;
+	let name = msg.member.name;
+        bot.channels.get("264845260339806211").sendMessage(name + "submitted a suggestion: ```\n" + output + "\n```\n from " + guild);
 
    
 
@@ -427,6 +440,13 @@ const name = args.join("_");
     msg.reply("\:white_check_mark: Role " + name + " removed!");
 }
   }
+} else if(msg.content.startsWith(prefix + "enablewelcome")){
+	var guildid = msg.member.guild;
+	var enabled = new Settings({guildid: "Enabled"});
+	enabled.save(function(err, enabled){
+	if(err) return console.error(err);	
+	});
+	
 }
 });
 
