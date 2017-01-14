@@ -10,6 +10,19 @@ const moment = require('moment');
 require("moment-duration-format");
 var TOKEN = process.env.TOKEN;
 var yt = require('ytdl-core');
+var mongoose = require('mongoose');
+mongoose.connect(process.env.MONGODB_URI);
+
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+console.log("Connected!");
+});
+
+var serverSchema = mongoose.Schema({
+    name: String
+});
+var settings = mongoose.model('settings', serverSchema);
 bot.on("ready", () => {
     bot.user.setGame(`//help //invite | ${bot.guilds.size} Servers!`);
     console.log("I am ready!");
@@ -427,6 +440,13 @@ const name = args.join("_");
     msg.reply("\:white_check_mark: Role " + name + " removed!");
 }
   }
+} else if(msg.content.startsWith(prefix + "enablewelcome")){
+    var guildfrom = msg.member.guild;
+    var check = new settings({ name: guildfrom + "enabled" });
+    check.save(function (err, fluffy) {
+  if (err) return console.error(err);
+});
+    msg.channel.sendMessage("Welcome message enabled!"); 
 }
 });
 
