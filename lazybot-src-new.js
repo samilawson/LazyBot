@@ -447,6 +447,15 @@ const name = args.join("_");
   if (err) return console.error(err);
 });
     msg.channel.sendMessage("Welcome message enabled!"); 
+} else if(msg.content.startsWith(prefix + "disablewelcome")){
+    let guildid = msg.member.guild.id;
+ var query = {'name': guildid + " enabled"};
+newData = guildid + " disabled";
+MyModel.findOneAndUpdate(query, newData, {upsert:true}, function(err, doc){
+    if (err) return res.send(500, { error: err });
+    return res.send("succesfully saved");
+});   
+    msg.channel.sendMessage("Welcome message disabled!");
 }
 });
 
