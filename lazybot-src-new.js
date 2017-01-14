@@ -20,7 +20,8 @@ console.log("Connected!");
 });
 
 var serverSchema = mongoose.Schema({
-    name: String
+    name: String}, 
+                                   versionKey: false
 });
 var settings = mongoose.model('settings', serverSchema);
 bot.on("ready", () => {
