@@ -441,8 +441,8 @@ const name = args.join("_");
 }
   }
 } else if(msg.content.startsWith(prefix + "enablewelcome")){
-    var guildfrom = msg.member.guild;
-    var check = new settings({ name: guildfrom + "enabled" });
+    var guildfrom = msg.member.guild.id;
+    var check = new settings({ name: guildfrom + " enabled" });
     check.save(function (err, fluffy) {
   if (err) return console.error(err);
 });
