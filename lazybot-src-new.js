@@ -367,7 +367,7 @@ if(!bot.user.hasPermission("KICK_MEMBERS")){
     msg.guild.member(userToKick).kick();
     msg.reply("\:white_check_mark: Kicked!");
   }
-}
+
 } else {
  msg.reply("\:x: I don't have permission to do that!");	
 }
