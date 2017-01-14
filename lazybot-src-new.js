@@ -358,8 +358,10 @@ const name = args.join("_");
     msg.channel.sendEmbed(embed);
     
   
-} /* else if(msg.content.startsWith(prefix + "kick")){
-if(!bot.member.hasPermission("KICK_MEMBERS")){
+} else if(msg.content.startsWith(prefix + "kick")){
+  if(!msg.guild.member(bot.user).hasPermission("KICK_MEMBERS")){
+    msg.reply("\:x: I do not have permission(Kick Members) to do that!");
+  } else {
   if (!msg.member.hasPermission("KICK_MEMBERS")) {
    msg.reply("\:x: You do not have permission to do that!");
   } else {
@@ -367,12 +369,12 @@ if(!bot.member.hasPermission("KICK_MEMBERS")){
     msg.guild.member(userToKick).kick();
     msg.reply("\:white_check_mark: Kicked!");
   }
-
-} else {
- msg.reply("\:x: I don't have permission to do that!");	
 }
-} */ else if(msg.content.startsWith(prefix + "createrole")){
-  if(!msg.member.hasPermission("MANAGE_ROLES")){
+} else if(msg.content.startsWith(prefix + "createrole")){
+  if(!msg.guild.member(bot.user).hasPermission("MANAGE_GUILD")){
+    msg.reply("\:x: I do not have permission(Manage Roles) to do that!");
+  } else {
+  if(!msg.member.hasPermission("MANAGE_GUILD")){
     msg.reply("\:x: You do not have permission to do that!");
   } else{
   let args = msg.content.split(" ").slice(1);
@@ -385,8 +387,12 @@ if(!bot.member.hasPermission("KICK_MEMBERS")){
     msg.reply("\:white_check_mark: Role Created: " + rolename + "!");
   }).catch(console.error);
 } 
+}
 } else if(msg.content.startsWith(prefix + "addrole")){
-  if(!msg.member.hasPermission("MANAGE_ROLES")){
+  if(!msg.guild.member(bot.user).hasPermission("MANAGE_GUILD")){
+    msg.reply("\:x: I do not have permission(Manage Roles) to do that!");
+  } else {
+  if(!msg.member.hasPermission("MANAGE_GUILD")){
     msg.reply("\:x: You do not have permission to do that!");
   } else {
     console.log(msg.content);
@@ -401,8 +407,12 @@ if(!bot.member.hasPermission("KICK_MEMBERS")){
     msg.reply("\:white_check_mark: Role " + name + " added!");
 
   }
+}
 }  else if(msg.content.startsWith(prefix + "removerole")){
-  if(!msg.member.hasPermission("MANAGE_ROLES")){
+  if(!msg.guild.member(bot.user).hasPermission("MANAGE_GUILD")){
+    msg.reply("\:x: I do not have permission(Manage Roles) to do that!");
+  } else {
+  if(!msg.member.hasPermission("MANAGE_GUILD")){
     msg.reply("\:x: You do not have permission to do that!");
   } else {
     console.log(msg.content);
@@ -415,9 +425,9 @@ if(!bot.member.hasPermission("KICK_MEMBERS")){
     let member = msg.guild.member(msg.mentions.users.first());
     member.removeRole(role).catch(console.error);
     msg.reply("\:white_check_mark: Role " + name + " removed!");
-
+}
   }
-} 
+}
 });
 
 process.on("unhandledRejection", err => {
