@@ -486,9 +486,17 @@ bot.channels.get("263423925017378816").sendMessage(toSend);
 });
 bot.on('guildMemberAdd', member => {
   let guild = member.guild;
+  let guildid = member.guild.id;
+  
+    settings.find({ name: guildid }, callback);
+    var searched = callback.search("enabled");
+    if(!searched = true){
+        console.log("Welcome message disabled");
+    } else {
     var msg;
     msg = `Welcome ${member} to ${member.guild.name}`;
     guild.defaultChannel.sendMessage(msg);
+    }
 });
 bot.on('guildMemberRemove', member => {
   let guild = member.guild;
