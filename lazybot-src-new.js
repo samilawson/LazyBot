@@ -189,7 +189,7 @@ else if(msg.content.startsWith(prefix + "world")){
          .setFooter(`Generated on ${date} at ${time}`)
         msg.channel.sendEmbed(embed);
     }else if(msg.content.startsWith(prefix + "help")){
-        msg.author.sendMessage("__**LazyBot Commands**__ \n \n **//nat <nation name>** gives a bunch of nation info, type **//more <nation name>** for more nation info \n **//reg <region name>** gives info about a region \n **//desc <nation name>** gives a description of the nation's economy \n **//rphelp** brings up a list of RP commands \n **//invite** sends the url to invite this bot to your server \n **//testserv** sends an invite to my Bot HQ \n **//suggest** leave me a suggestion! \n **//emb <region name>** gives a list of embassies \n **//stats** gives all kinds of stats \n **//ping** Pong! \n **//wiki <input>** gives the wikipedia page of the input if it is valid \n **//funny** gives a random Cyanide & Happiness Comic \n **//serverinfo** gives info about the server \n Be on the lookout for easter eggs!");
+        msg.author.sendMessage("__**LazyBot Commands**__ \n \n **//nat <nation name>** gives a bunch of nation info, type **//more <nation name>** for more nation info \n **//reg <region name>** gives info about a region \n **//desc <nation name>** gives a description of the nation's economy \n **//rphelp** brings up a list of RP commands \n **//invite** sends the url to invite this bot to your server \n **//testserv** sends an invite to my Bot HQ \n **//suggest** leave me a suggestion! \n **//emb <region name>** gives a list of embassies \n **//stats** gives all kinds of stats \n **//ping** Pong! \n **//wiki <input>** gives the wikipedia page of the input if it is valid \n **//funny** gives a random Cyanide & Happiness Comic \n **//serverinfo** gives info about the server \n **//kick <mention a user>** Kicks the mentioned user, only works if the kicker has kick member perms \n **//addrole <metion user> <role name>** Adds the given role to the mentioned user \n **//removerole <mention user> <role name>** same as //addrole but removes it \n Be on the lookout for easter eggs!");
 	    msg.reply("Help has arrived! Check your DMs!");
     } else if(msg.content === "RIP"){
         msg.channel.sendMessage("Yeah, RIP");
@@ -242,13 +242,10 @@ else if(msg.content.startsWith(prefix + "world")){
         console.log(diceOne);
         console.log(diceTwo);
         msg.channel.sendMessage(diceOne + " | " + diceTwo);
-    }  else if (msg.content=== (prefix + "CTSN")){
+    }  else if (msg.content=== (prefix + "size")){
         let number = msg.guild.roles.find("name", "CTSN Member").members.size;
         msg.channel.sendMessage("There are " + number + " CTSN Members here!");
-    } else if (msg.content=== (prefix + "USSD")){
-        let numberone = msg.guild.roles.find("name", "USSD Member").members.size;
-        msg.channel.sendMessage("There are " + numberone + " USSD Members here!");
-    } else if (msg.content.startsWith(prefix + "armysize")){
+    }  else if (msg.content.startsWith(prefix + "armysize")){
         let args = msg.content.split(" ").slice(1);
         var name = args.join("_");""
         console.log(name);
@@ -270,13 +267,8 @@ else if(msg.content.startsWith(prefix + "world")){
         });
         
         
-    } else if(msg.content === (prefix + "Exodus")){
-        let numbertwo = msg.guild.roles.find("name", "Exodus Member").members.size;
-        msg.channel.sendMessage("There are " + numbertwo + " Exodus members here!");
-    } else if(msg.content === (prefix + "mods")){
-        msg.channel.sendMesage("```" + "Our mods: Siberia, Vetelo, Melorian Republic, NuclearWaste123, and New Vapaus!" + "```");
     } else if(msg.content === (prefix + "rphelp")){
-        msg.channel.sendMessage("```\nList of RP Commands:\n .rollone \n .rolltwo \n" + "```");
+        msg.channel.sendMessage("```\nList of RP Commands:\n //rollone \n //rolltwo \n" + "```");
     } else if(msg.content.startsWith(prefix + "invite")){
         msg.reply("Invite me to your server! https://discordapp.com/oauth2/authorize?client_id=259784917339078656&scope=bot&permissions=0");
     } else if(msg.content.startsWith(prefix + "testserv")){
@@ -301,22 +293,7 @@ else if(msg.content.startsWith(prefix + "world")){
 const name = args.join("_");
  msg.channel.sendMessage("\:book: | https://en.wikipedia.org/wiki/" + name);
 }
-  else if (msg.content.startsWith(prefix + 'play')) {
-    const voiceChannel = msg.member.voiceChannel;
-    const args = msg.content.split(" ").splice(1);
-    if (!voiceChannel) {
-      return msg.reply(`Please join a voice channel first!`);
-    }
-    voiceChannel.join()
-      .then(connnection => {
-        let stream = yt(args , {audioonly: true});
-        const dispatcher = connnection.playStream(stream);
-        dispatcher.on('end', () => {
-          voiceChannel.leave();
-           
-        });
-      });
-  } else if(msg.content.startsWith(prefix + "funny")){
+   else if(msg.content.startsWith(prefix + "funny")){
 	const max = 4462;
     msg.channel.sendMessage('http://explosm.net/comics/' + (Math.floor(Math.random()* max) + 1));
 } else if(msg.content.startsWith(prefix + "serverinfo")){
@@ -354,7 +331,91 @@ const name = args.join("_");
   var announcement = args.join(" ");
   console.log(announcement);
   bot.guilds.forEach(guild => { guild.defaultChannel.sendMessage(announcement) });
-}
+} else if(msg.content.startsWith(prefix + "user")){
+    
+    let embed = new Discord.RichEmbed();
+    var name = msg.content.split(" ").splice(1);
+    console.log(name);
+    var final = name.join(" ");
+    console.log(final);
+    var username = bot.users.find('username', final).id;
+   
+    const now = new Date();
+  const date = moment(now).format("MMM/DD/YYYY");
+  const time = moment(now).format("H:mm:ss");
+    
+    embed.setColor(3447003)
+    .setAuthor(final, `${bot.users.get(username).avatarURL}`)
+    .setTitle(`User Info for ${final}`)
+    .setDescription('User info')
+    .setThumbnail(`${bot.users.get(username).avatarURL}`)
+    .addField('User ID', `${username}`, true)
+    .addField('Nickname', bot.users.get(username).nickname, true)
+    .addField('Account Created', `${bot.users.get(username).createdAt}`, true)
+    .addField(`Joined Server at`, `${msg.guild.members.get(username).joinedAt}`, true)
+    .addField('Playing', bot.users.get(username).presence.game != null ? bot.users.get(username).presence.game.name : "Nothing", true)
+    .addField(`Discrim`, `${bot.users.get(username).discriminator}`, true)
+    .addField(`Bot?`, `${bot.users.get(username).bot}`, true)
+    .addField(`Roles`, `${msg.guild.members.get(username).roles.map(r => r.name).join(", ")}`, true)
+    .setFooter(`Generated on ` + date + ` at ` + time)
+    msg.channel.sendEmbed(embed);
+    
+  
+} else if(msg.content.startsWith(prefix + "kick")){
+  if (!msg.member.hasPermission("KICK_MEMBERS")) {
+   msg.reply("\:x: You do not have permission to do that!");
+  } else {
+    let userToKick = msg.mentions.users.first();
+    msg.guild.member(userToKick).kick();
+    msg.reply("\:white_check_mark: Kicked!");
+  }
+} else if(msg.content.startsWith(prefix + "createrole")){
+  if(!msg.member.hasPermission("MANAGE_ROLES")){
+    msg.reply("\:x: You do not have permission to do that!");
+  } else{
+  let args = msg.content.split(" ").slice(1);
+  console.log(args);
+  let rolename = args.join(" "); 
+  console.log(rolename);
+  let guild = msg.member.guild;
+  guild.createRole({ name: rolename })
+  .then(role => {
+    msg.reply("\:white_check_mark: Role Created: " + rolename + "!");
+  }).catch(console.error);
+} 
+} else if(msg.content.startsWith(prefix + "addrole")){
+  if(!msg.member.hasPermission("MANAGE_ROLES")){
+    msg.reply("\:x: You do not have permission to do that!");
+  } else {
+    console.log(msg.content);
+    
+    let args = msg.content.split(" ").splice(2);
+    let name = args.join(" ");
+    console.log(name);
+    let role = msg.guild.roles.find("name", `${name}`);
+    console.log(role);
+    let member = msg.guild.member(msg.mentions.users.first());
+    member.addRole(role).catch(console.error);
+    msg.reply("\:white_check_mark: Role " + name + " added!");
+
+  }
+}  else if(msg.content.startsWith(prefix + "removerole")){
+  if(!msg.member.hasPermission("MANAGE_ROLES")){
+    msg.reply("\:x: You do not have permission to do that!");
+  } else {
+    console.log(msg.content);
+    
+    let args = msg.content.split(" ").splice(2);
+    let name = args.join(" ");
+    console.log(name);
+    let role = msg.guild.roles.find("name", `${name}`);
+    console.log(role);
+    let member = msg.guild.member(msg.mentions.users.first());
+    member.removeRole(role).catch(console.error);
+    msg.reply("\:white_check_mark: Role " + name + " removed!");
+
+  }
+} 
 });
 
 process.on("unhandledRejection", err => {
