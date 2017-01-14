@@ -453,7 +453,7 @@ const name = args.join("_");
  var query = {'name': guildid + " enabled"};
 newData = guildid + " disabled";
 settings.findOneAndUpdate(query, newData, {upsert:true}, function(err, doc){
-    if (err) return console.log(error: err);
+    if (err) return console.log("Error");
     return res.send("succesfully saved");
 });   
     msg.channel.sendMessage("Welcome message disabled!");
