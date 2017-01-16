@@ -488,7 +488,7 @@ bot.on('guildMemberAdd', member => {
  
   let guildid = member.guild.id;
   
-    getPerms : function(res){
+     function getPerms(res){
     var perms = function(res){
         return function(err, data){
             if (err){
