@@ -118,7 +118,7 @@ bot.on("message", msg => {
    
   ],
 }});
-    });
+    })
     });
 
 }
@@ -442,7 +442,7 @@ const name = args.join("_");
     msg.reply("\:white_check_mark: Role " + name + " removed!");
 }
   }
-} else if(msg.content.startsWith(prefix + "enablewelcome")){
+}/* else if(msg.content.startsWith(prefix + "enablewelcome")){
     var guildfrom = msg.member.guild.id;
     var check = new settings({ name: guildfrom + " enabled" });
     check.save(function (err, fluffy) {
@@ -458,7 +458,7 @@ settings.findOneAndUpdate(query, newData, {upsert:true}, function(err, doc){
     return console.log("succesfully saved");
 });   
     msg.channel.sendMessage("Welcome message disabled!");
-}
+}*/
 });
 
 process.on("unhandledRejection", err => {
