@@ -488,8 +488,8 @@ bot.on('guildMemberAdd', member => {
   let guild = member.guild;
   let guildid = member.guild.id;
   
-    settings.find({ name: guildid }, callback);
-    var searched = callback.search("enabled");
+    var perms = settings.find({ name: guildid });
+    var searched = perms.search("enabled");
     if(searched === 7){
     var msg;
     msg = `Welcome ${member} to ${member.guild.name}`;
