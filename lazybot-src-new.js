@@ -451,7 +451,7 @@ const name = args.join("_");
 } else if(msg.content.startsWith(prefix + "disablewelcome")){
     let guildid = msg.member.guild.id;
  var query = {'name': guildid + " enabled"};
-newData = guildid + " disabled";
+newData = { 'name': guildid + " disabled"};
 settings.findOneAndUpdate(query, newData, {upsert:true}, function(err, doc){
     if (err) return console.log("Error");
     return console.log("succesfully saved");
