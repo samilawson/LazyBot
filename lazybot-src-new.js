@@ -119,6 +119,7 @@ bot.on("message", msg => {
   ],
 }});
     });
+    });
 
 }
 else if(msg.content.startsWith(prefix + "world")){
