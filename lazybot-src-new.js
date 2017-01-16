@@ -512,7 +512,8 @@ bot.on('guildMemberAdd', member => {
   console.log("Error message disabled!");
     }
 */
-}
+
+
 
 });
 bot.on('guildMemberRemove', member => {
