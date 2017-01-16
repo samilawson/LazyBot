@@ -488,7 +488,7 @@ bot.on('guildMemberAdd', member => {
  
   let guildid = member.guild.id;
   
-     function getPerms(res){
+     /* function getPerms(res){
     var perms = function(res){
         return function(err, data){
             if (err){
@@ -503,15 +503,15 @@ bot.on('guildMemberAdd', member => {
     var final = settings.find({'name': guildid + " enabled"},perms(res));
     console.log(final);
     var enabled = final.search("enabled");
-    if(enabled === 7){
+    if(enabled === 7){*/
        let guild = member.guild;
     var msg;
     msg = `Welcome ${member} to ${member.guild.name}`;
     guild.defaultChannel.sendMessage(msg);
-    } else {
+   /* } else {
   console.log("Error message disabled!");
     }
-
+*/
 }
 
 });
