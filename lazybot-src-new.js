@@ -488,7 +488,7 @@ bot.on('guildMemberAdd', member => {
   let guild = member.guild;
   let guildid = member.guild.id;
   
-    var perms = settings.find({ name: guildid });
+    var perms = settings.find({ name: guildid + " enabled"}, callback);
     console.log(perms);
     var searched = perms.search("enabled");
     if(searched === 7){
