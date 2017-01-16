@@ -485,19 +485,35 @@ bot.on('guildDelete', Guild => {
 bot.channels.get("263423925017378816").sendMessage(toSend);
 });
 bot.on('guildMemberAdd', member => {
-  let guild = member.guild;
+ 
   let guildid = member.guild.id;
   
-    var perms = settings.find({ name: guildid + " enabled"}, callback);
-    console.log(perms);
-    var searched = perms.search("enabled");
-    if(searched === 7){
+    getPerms : function(res){
+    var perms = function(res){
+        return function(err, data){
+            if (err){
+                console.log('error occured');
+                return;
+            }
+            
+            console.log(data);
+        }
+    }
+
+    var final = settings.find({'name': guildid + " enabled"},perms(res));
+    console.log(final);
+    var enabled = final.search("enabled");
+    if(enabled === 7){
+       let guild = member.guild;
     var msg;
     msg = `Welcome ${member} to ${member.guild.name}`;
     guild.defaultChannel.sendMessage(msg);
     } else {
-     console.log("Welcome message disabled!");   
+  console.log("Error message disabled!");
     }
+
+}
+
 });
 bot.on('guildMemberRemove', member => {
   let guild = member.guild;
