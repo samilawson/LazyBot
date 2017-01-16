@@ -95,7 +95,7 @@ bot.on("message", msg => {
         }
       })
 } else if(msg.content.startsWith(prefix + "emb")){
-  const embed = new Discord.RichEmbed();
+  
   const args = msg.content.split(" ").slice(1);
   const name = args.join("_");
    const result = request.get(`https://nationstates.net/cgi-bin/api.cgi?region=${name}&q=name+embassies`);
@@ -118,9 +118,15 @@ bot.on("message", msg => {
    
   ],
 }});
+ 
     })
-    });
-
+    
+    })
+.catch((err) => {
+  if(err){
+    msg.channel.sendMessage("\:x: Error! Invalid region name or exceeded character limit(2000)!");
+  }
+ })
 }
 else if(msg.content.startsWith(prefix + "world")){
   const embed = new Discord.RichEmbed();
