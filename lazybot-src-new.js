@@ -98,28 +98,28 @@ bot.on("message", msg => {
   const embed = new Discord.RichEmbed();
   const args = msg.content.split(" ").slice(1);
   const name = args.join("_");
-  const now = new Date();
-  const date = moment(now).format("MMM/DD/YYYY");
-  const time = moment(now).format("H:mm:ss");
-  const result = request.get(`https://nationstates.net/cgi-bin/api.cgi?region=${name}&q=name+flag+embassies`);
-  result.then((res) => {
+   const result = request.get(`https://nationstates.net/cgi-bin/api.cgi?region=${name}&q=name+embassies`);
+ result.then((res) => {
     parseString(res.text, {ignoreAttrs : true, mergeAttrs : true}, (err, obj) => {
-      embed.setColor(3447003)
-      .setAuthor(obj.REGION.NAME, `${obj.REGION.FLAG}`)
-      .setTitle(`Region Info for ${obj.REGION.NAME}`)
-      .setDescription(`wew lad`)
-      .setThumbnail(`${obj.REGION.FLAG}`)
-      .addField('Embassies', obj.REGION.EMBASSIES[0].EMBASSY)
-      .setFooter(`Generated on ${date} at ${time}`)
-        console.log(require('util').inspect(obj.REGION.EMBASSIES[0].EMBASSY));
-      msg.channel.sendEmbed(embed);
-    })
-  })
- .catch((err) => {
-        if(err){
-          msg.channel.sendMessage("\:x: " +  "`" + "Error: Invalid Region" + "`");
-        }
-      })
+ msg.channel.sendMessage("", {embed: {
+  color: 3447003,
+  author: {
+    name: "LazyBot",
+    icon_url: bot.user.avatarURL,
+  },
+  title: `Embassies for ${obj.REGION.NAME}`,
+  icon_url: bot.user.avatarURL,
+  fields: [
+    {
+      name: 'Embassies',
+      value: `${obj.REGION.EMBASSIES[0].EMBASSY}`,
+      inline: true
+}
+   
+  ],
+}});
+
+
 }
 else if(msg.content.startsWith(prefix + "world")){
   const embed = new Discord.RichEmbed();
