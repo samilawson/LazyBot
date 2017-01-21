@@ -470,7 +470,7 @@ const name = args.join("_");
       embed.setColor(3447003)
       .setTitle(`Latest News for ${collected.first().content}`)
       .setThumbnail(`http://www.vtc.edu/sites/default/files/news-3.jpg`)
-      .addField(`Headline`, `[${articlesResponse.articles[0]["title"]}](${articlesResponse.articles[0]["url"]})`, true)
+      .addField(`Top Headlines`, `[${articlesResponse.articles[0]["title"]}](${articlesResponse.articles[0]["url"]})`, true)
        .addField(`\u200b`,`[${articlesResponse.articles[1]["title"]}](${articlesResponse.articles[1]["url"]})`, true)
       .addField(`\u200b`,`[${articlesResponse.articles[2]["title"]}](${articlesResponse.articles[2]["url"]})`, true)
       .addField(`\u200b`,`[${articlesResponse.articles[3]["title"]}](${articlesResponse.articles[3]["url"]})`, true)
