@@ -451,25 +451,42 @@ const name = args.join("_");
 }
   }
 }  else if(msg.content.startsWith(prefix + "news")){
-  msg.reply('Please enter a valid news key: cnn, the_washington_post, the_wall_street_journal, google-news, espn, reddit-r-all, or reuters')
+  msg.reply('Please enter a valid news key: CNN, Washingon Post, WSJ (Wall Street Journal), google, espn, Reddit, or Reuters')
   .then(() => {
-  msg.channel.awaitMessages(response => response.content === "cnn" || response.content === "the_washington_post" || response.content === "the_wall_street_journal" || response.content === "google-news" || response.content === "espn" || response.content === "reddit-r-all" || response.content === "reuters", {
+  msg.channel.awaitMessages(response => response.content === "CNN" || response.content === "Washington Post" || response.content === "WSJ" || response.content === "google" || response.content === "espn" || response.content === "Reddit" || response.content === "Reuters", {
     max: 1,
     time: 12000,
     errors: ['time'],
   })
   .then((collected) => {
     console.log(collected.first().content);
+    var newsAgency;
+    if(collected.first().content === "CNN"){
+      newsAgency = "cnn";
+    } else if(collected.first().content === "Washington Post"){
+      newsAgency = "the_washington_post";
+    } else if(collected.first().content === "WSJ"){
+      newsAgency = "the_wall_street_journal";
+    } else if(collected.first().content === "google"){
+      newsAgency = "google-news";
+    } else if(collected.first().content === "espn"){
+      newsAgency = "espn";
+    } else if(collected.first().content === "Reddit"){
+      newsAgency = "reddit-r-all";
+    } else if(collected.first().content === "Reuters"){
+      newsAgency = "reuters";
+    }
     const embed = new Discord.RichEmbed();
     newsapi.articles({
-    source: collected.first().content, // required
+    source: newsAgency, // required
     sortBy: 'top' // optional
   }).then(articlesResponse => {
     console.log(articlesResponse);
  
+ 
       embed.setColor(3447003)
-      .setTitle(`Latest News for ${collected.first().content}`)
-      .setThumbnail(`http://www.vtc.edu/sites/default/files/news-3.jpg`)
+      .setTitle(`Latest News for ${newsAgency}`)
+      .setThumbnail(`${articlesResponse.articles[0]["urlToImage}`)
       .addField(`Top Headlines`, `[${articlesResponse.articles[0]["title"]}](${articlesResponse.articles[0]["url"]})`, true)
        .addField(`\u200b`,`[${articlesResponse.articles[1]["title"]}](${articlesResponse.articles[1]["url"]})`, true)
       .addField(`\u200b`,`[${articlesResponse.articles[2]["title"]}](${articlesResponse.articles[2]["url"]})`, true)
