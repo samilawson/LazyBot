@@ -11,6 +11,7 @@ require("moment-duration-format");
 var TOKEN = process.env.TOKEN;
 var yt = require('ytdl-core');
 var mongoose = require('mongoose');
+ const NewsAPI = require('newsapi');
 mongoose.connect(process.env.MONGODB_URI);
 
 var db = mongoose.connection;
