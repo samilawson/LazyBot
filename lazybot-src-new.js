@@ -486,7 +486,7 @@ const name = args.join("_");
  
       embed.setColor(3447003)
       .setTitle(`Latest News for ${newsAgency}`)
-      .setThumbnail(`${articlesResponse.articles[0]["urlToImage}`)
+      .setThumbnail(`${articlesResponse.articles[0]["urlToImage"]}`)
       .addField(`Top Headlines`, `[${articlesResponse.articles[0]["title"]}](${articlesResponse.articles[0]["url"]})`, true)
        .addField(`\u200b`,`[${articlesResponse.articles[1]["title"]}](${articlesResponse.articles[1]["url"]})`, true)
       .addField(`\u200b`,`[${articlesResponse.articles[2]["title"]}](${articlesResponse.articles[2]["url"]})`, true)
