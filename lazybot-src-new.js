@@ -210,7 +210,7 @@ else if(msg.content.startsWith(prefix + "world")){
          .setFooter(`Generated on ${date} at ${time}`)
         msg.channel.sendEmbed(embed);
     }else if(msg.content.startsWith(prefix + "help")){
-        msg.author.sendMessage("__**LazyBot Commands**__ \n \n **//nat <nation name>** gives a bunch of nation info, type **//more <nation name>** for more nation info \n **//reg <region name>** gives info about a region \n **//desc <nation name>** gives a description of the nation's economy \n **//rphelp** brings up a list of RP commands \n **//invite** sends the url to invite this bot to your server \n **//testserv** sends an invite to my Bot HQ \n **//suggest** leave me a suggestion! \n **//emb <region name>** gives a list of embassies \n **//stats** gives all kinds of stats \n **//ping** Pong! \n **//wiki <input>** gives the wikipedia page of the input if it is valid \n **//funny** gives a random Cyanide & Happiness Comic \n **//serverinfo** gives info about the server \n **//kick <mention a user>** Kicks the mentioned user, only works if the kicker has kick member perms \n **//addrole <metion user> <role name>** Adds the given role to the mentioned user \n **//removerole <mention user> <role name>** same as //addrole but removes it \n Be on the lookout for easter eggs!");
+        msg.author.sendMessage("__**LazyBot Commands**__ \n \n **//nat <nation name>** gives a bunch of nation info, type **//more <nation name>** for more nation info \n **//reg <region name>** gives info about a region \n **//desc <nation name>** gives a description of the nation's economy \n **//rphelp** brings up a list of RP commands \n **//invite** sends the url to invite this bot to your server \n **//testserv** sends an invite to my Bot HQ \n **//suggest** leave me a suggestion! \n **//emb <region name>** gives a list of embassies \n **//stats** gives all kinds of stats \n **//ping** Pong! \n **//wiki <input>** gives the wikipedia page of the input if it is valid \n **//funny** gives a random Cyanide & Happiness Comic \n **//serverinfo** gives info about the server \n **//kick <mention a user>** Kicks the mentioned user, only works if the kicker has kick member perms \n **//addrole <metion user> <role name>** Adds the given role to the mentioned user \n **//removerole <mention user> <role name>** same as //addrole but removes it \n **//news** will ask for a news outlet and will give the top four headlines \n Be on the lookout for easter eggs!");
       msg.reply("Help has arrived! Check your DMs!");
     } else if(msg.content === "RIP"){
         msg.channel.sendMessage("Yeah, RIP");
@@ -448,6 +448,44 @@ const name = args.join("_");
     msg.reply("\:white_check_mark: Role " + name + " removed!");
 }
   }
+}  else if(msg.content.startsWith(prefix + "news")){
+  msg.reply('Please enter a valid news key: cnn, the_washingon_post, the_wall_street_journal, google-news, espn, reddit-r-all, or reuters')
+  .then(() => {
+  msg.channel.awaitMessages(response => response.content === "cnn" || response.content === "the_washington_post" || response.content === "the_wall_street_journal" || response.content === "google-news" || response.content === "espn" || response.content === "reddit-r-all" || response.content === "reuters", {
+    max: 1,
+    time: 12000,
+    errors: ['time'],
+  })
+  .then((collected) => {
+    console.log(collected.first().content);
+    const embed = new Discord.RichEmbed();
+    newsapi.articles({
+    source: collected.first().content, // required
+    sortBy: 'top' // optional
+  }).then(articlesResponse => {
+    console.log(articlesResponse);
+ 
+      embed.setColor(3447003)
+      .setTitle(`Latest News for ${collected.first().content}`)
+      .setThumbnail(`http://www.vtc.edu/sites/default/files/news-3.jpg`)
+      .addField(`Headline`, `${articlesResponse.articles[0]["title"]}`, true)
+      .addField(`Link`, `${articlesResponse.articles[0]["url"]}`, true)
+      .addField(`Headline`, `${articlesResponse.articles[1]["title"]}`, true)
+      .addField(`Link`, `${articlesResponse.articles[1]["url"]}`, true)
+      .addField(`Headline`, `${articlesResponse.articles[2]["title"]}`, true)
+      .addField(`Link`, `${articlesResponse.articles[2]["url"]}`, true)
+      .addField(`Headline`, `${articlesResponse.articles[3]["title"]}`, true)
+      .addField(`Link`, `${articlesResponse.articles[3]["url"]}`, true)
+      msg.channel.sendEmbed(embed);
+      
+    })
+    })
+    .catch(() => {
+      msg.channel.sendMessage('\:x: Oops! Something went wrong!');
+    })
+})
+   
+
 }/* else if(msg.content.startsWith(prefix + "enablewelcome")){
     var guildfrom = msg.member.guild.id;
     var check = new settings({ name: guildfrom + " enabled" });
