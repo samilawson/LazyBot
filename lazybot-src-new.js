@@ -449,7 +449,7 @@ const name = args.join("_");
 }
   }
 }  else if(msg.content.startsWith(prefix + "news")){
-  msg.reply('Please enter a valid news key: cnn, the_washingon_post, the_wall_street_journal, google-news, espn, reddit-r-all, or reuters')
+  msg.reply('Please enter a valid news key: cnn, the_washington_post, the_wall_street_journal, google-news, espn, reddit-r-all, or reuters')
   .then(() => {
   msg.channel.awaitMessages(response => response.content === "cnn" || response.content === "the_washington_post" || response.content === "the_wall_street_journal" || response.content === "google-news" || response.content === "espn" || response.content === "reddit-r-all" || response.content === "reuters", {
     max: 1,
