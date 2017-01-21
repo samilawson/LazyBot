@@ -486,6 +486,19 @@ const name = args.join("_");
 })
    
 
+} else if (msg.content.startsWith(prefix + "purge")) {
+  if(!msg.guild.member(bot.user).hasPermission("MANAGE_MESSAGES")){
+    msg.reply("\:x: I do not have permission(Manage Messages) to do that!");
+  } else {
+    if(!msg.member.hasPermission("MANAGE_MESSAGES")){
+    msg.reply("\:x: You do not have permission to do that!");
+    }   else {
+    let params = msg.content.split(" ").slice(1);
+    let messagecount = parseInt(params[0]);
+    msg.channel.fetchMessages({limit: messagecount})
+        .then(messages => msg.channel.bulkDelete(messages));
+        }
+    }
 }/* else if(msg.content.startsWith(prefix + "enablewelcome")){
     var guildfrom = msg.member.guild.id;
     var check = new settings({ name: guildfrom + " enabled" });
