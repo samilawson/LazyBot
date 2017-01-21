@@ -300,7 +300,7 @@ else if(msg.content.startsWith(prefix + "world")){
 
    
 
-  msg.channel.sendMessage("Thank you for your suggestion!");
+  msg.channel.sendMessage("Thank you for your suggestion! If you have any questions please join my server: https://discord.gg/TmQQddz");
     } else if(msg.content.startsWith(prefix + "ping")){
         msg.channel.sendMessage( 'Ping' ).then( message => {
         message.edit( `\:ping_pong: Pong! ( took: ${ message.createdTimestamp - msg.createdTimestamp } ms )` );
