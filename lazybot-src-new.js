@@ -349,7 +349,7 @@ const name = args.join("_");
   var announcement = args.join(" ");
   console.log(announcement);
   bot.guilds.forEach(guild => { guild.defaultChannel.sendMessage(announcement) });
-} else if(msg.content.startsWith(prefix + "userinfo")){
+}/* else if(msg.content.startsWith(prefix + "userinfo")){
     
     let embed = new Discord.RichEmbed();
     var name = msg.content.split(" ").splice(1);
@@ -379,7 +379,7 @@ const name = args.join("_");
     msg.channel.sendEmbed(embed);
     
   
-} else if(msg.content.startsWith(prefix + "kick")){
+}*/ else if(msg.content.startsWith(prefix + "kick")){
   if(!msg.guild.member(bot.user).hasPermission("KICK_MEMBERS")){
     msg.reply("\:x: I do not have permission(Kick Members) to do that!");
   } else {
