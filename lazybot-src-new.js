@@ -296,7 +296,7 @@ else if(msg.content.startsWith(prefix + "world")){
         console.log(args);
         var output = args.join(" ");
         console.log(output);
-        bot.channels.get("264845260339806211").sendMessage("```\n" + output + "\n```" + msg.member.guild.name);
+        bot.channels.get("264845260339806211").sendMessage("A suggestion was submitted from" + "**" + msg.member.guild.name + "**" + "```\n" + output + "\n```");
 
    
 
