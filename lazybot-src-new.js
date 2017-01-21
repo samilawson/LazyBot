@@ -493,7 +493,7 @@ const name = args.join("_");
     msg.reply("\:x: You do not have permission to do that!");
     }   else {
     let params = msg.content.split(" ").slice(1);
-    let messagecount = parseInt(params[0]);
+    let messagecount = params;
     msg.channel.fetchMessages({limit: messagecount})
         .then(messages => msg.channel.bulkDelete(messages));
         }
