@@ -12,6 +12,7 @@ var TOKEN = process.env.TOKEN;
 var yt = require('ytdl-core');
 var mongoose = require('mongoose');
  const NewsAPI = require('newsapi');
+let newsapi = new NewsAPI('0b3a687275104852a2b8e5c013dbc3b5');
 mongoose.connect(process.env.MONGODB_URI);
 
 var db = mongoose.connection;
