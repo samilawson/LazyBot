@@ -510,8 +510,8 @@ const name = args.join("_");
     msg.reply("\:x: You do not have permission to do that!");
     }   else {
      let args = msg.content.split(" ").slice(1);
-    let messagecount = parseInt(args);
-        let messagecountadd = messagecount + 1;
+    
+        let messagecountadd = args + 1;
         msg.channel.fetchMessages({
                 limit: messagecountadd
             })
