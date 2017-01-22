@@ -451,9 +451,9 @@ const name = args.join("_");
 }
   }
 }  else if(msg.content.startsWith(prefix + "news")){
-  msg.reply('Please enter a valid news key: CNN, Washingon Post, WSJ (Wall Street Journal), google, espn, Reddit, or Reuters')
+  msg.reply('Please enter a valid news key: CNN, BBC, CNBC, Google, ESPN, Reddit, or Reuters')
   .then(() => {
-  msg.channel.awaitMessages(response => response.content === "CNN" || response.content === "Washington Post" || response.content === "WSJ" || response.content === "google" || response.content === "espn" || response.content === "Reddit" || response.content === "Reuters", {
+  msg.channel.awaitMessages(response => response.content === "CNN" || response.content === "BBC" || response.content === "CNBC" || response.content === "Google" || response.content === "ESPN" || response.content === "Reddit" || response.content === "Reuters", {
     max: 1,
     time: 12000,
     errors: ['time'],
@@ -463,13 +463,13 @@ const name = args.join("_");
     var newsAgency;
     if(collected.first().content === "CNN"){
       newsAgency = "cnn";
-    } else if(collected.first().content === "Washington Post"){
-      newsAgency = "the_washington_post";
-    } else if(collected.first().content === "WSJ"){
-      newsAgency = "the_wall_street_journal";
-    } else if(collected.first().content === "google"){
+    } else if(collected.first().content === "BBC"){
+      newsAgency = "bbc-news";
+    } else if(collected.first().content === "CNBC"){
+      newsAgency = "cnbc";
+    } else if(collected.first().content === "Google"){
       newsAgency = "google-news";
-    } else if(collected.first().content === "espn"){
+    } else if(collected.first().content === "ESPN"){
       newsAgency = "espn";
     } else if(collected.first().content === "Reddit"){
       newsAgency = "reddit-r-all";
@@ -509,11 +509,17 @@ const name = args.join("_");
     if(!msg.member.hasPermission("MANAGE_MESSAGES")){
     msg.reply("\:x: You do not have permission to do that!");
     }   else {
-    let params = msg.content.split(" ").slice(1);
-    let messagecount = params;
-    msg.channel.fetchMessages({limit: messagecount})
-        .then(messages => msg.channel.bulkDelete(messages));
-        }
+    let messagecount = parseInt(msg.content.substring(8));
+        let messagecountadd = messagecount + 1;
+        msg.channel.fetchMessages({
+                limit: messagecountadd
+            })
+            .then(messages => msg.channel.bulkDelete(messages));
+        msg.channel.sendMessage(`I have pruned **${messagecount}** messages.`).then(m => {
+            setTimeout(function() {
+                m.delete();
+            }, 1100);
+        });
     }
 } else if (msg.content.startsWith(prefix + "clock")){
   const today = new Date();
