@@ -521,6 +521,7 @@ const name = args.join("_");
             }, 1100);
         });
     }
+  }
 } else if (msg.content.startsWith(prefix + "clock")){
   const today = new Date();
   var hours = today.getHours();
