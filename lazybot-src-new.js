@@ -516,7 +516,7 @@ const name = args.join("_");
                 limit: messagecountadd
             })
             .then(messages => msg.channel.bulkDelete(messages));
-        msg.channel.sendMessage(`I have pruned **${messagecount}** messages.`).then(m => {
+        msg.channel.sendMessage(`I have pruned **${args}** messages.`).then(m => {
             setTimeout(function() {
                 m.delete();
             }, 1100);
