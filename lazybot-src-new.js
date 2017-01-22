@@ -509,7 +509,8 @@ const name = args.join("_");
     if(!msg.member.hasPermission("MANAGE_MESSAGES")){
     msg.reply("\:x: You do not have permission to do that!");
     }   else {
-    let messagecount = parseInt(msg.content.substring(8));
+     let args = msg.content.split(" ").slice(1);
+    let messagecount = parseInt(args);
         let messagecountadd = messagecount + 1;
         msg.channel.fetchMessages({
                 limit: messagecountadd
