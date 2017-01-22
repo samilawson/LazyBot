@@ -11,6 +11,8 @@ require("moment-duration-format");
 var TOKEN = process.env.TOKEN;
 var yt = require('ytdl-core');
 var mongoose = require('mongoose');
+var r = require("nraw");
+var Reddit = new r("Testbot v0.0.1 by FirstComrade17");
  const NewsAPI = require('newsapi');
 let newsapi = new NewsAPI('0b3a687275104852a2b8e5c013dbc3b5');
 mongoose.connect(process.env.MONGODB_URI);
@@ -212,7 +214,7 @@ else if(msg.content.startsWith(prefix + "world")){
          .setFooter(`Generated on ${date} at ${time}`)
         msg.channel.sendEmbed(embed);
     }else if(msg.content.startsWith(prefix + "help")){
-        msg.author.sendMessage("__**LazyBot Commands**__ \n \n **//nat <nation name>** gives a bunch of nation info, type **//more <nation name>** for more nation info \n **//reg <region name>** gives info about a region \n **//desc <nation name>** gives a description of the nation's economy \n **//rphelp** brings up a list of RP commands \n **//invite** sends the url to invite this bot to your server \n **//testserv** sends an invite to my Bot HQ \n **//suggest** leave me a suggestion! \n **//emb <region name>** gives a list of embassies \n **//stats** gives all kinds of stats \n **//ping** Pong! \n **//wiki <input>** gives the wikipedia page of the input if it is valid \n **//funny** gives a random Cyanide & Happiness Comic \n **//serverinfo** gives info about the server \n **//kick <mention a user>** Kicks the mentioned user, only works if the kicker has kick member perms \n **//addrole <metion user> <role name>** Adds the given role to the mentioned user \n **//removerole <mention user> <role name>** same as //addrole but removes it \n **//news** will ask for a news outlet and will give the top four headlines \n **//clock** gives a world clock \n Be on the lookout for easter eggs!");
+        msg.author.sendMessage("__**LazyBot Commands**__ \n \n **//nat <nation name>** gives a bunch of nation info, type **//more <nation name>** for more nation info \n **//reg <region name>** gives info about a region \n **//desc <nation name>** gives a description of the nation's economy \n **//rphelp** brings up a list of RP commands \n **//invite** sends the url to invite this bot to your server \n **//testserv** sends an invite to my Bot HQ \n **//suggest** leave me a suggestion! \n **//emb <region name>** gives a list of embassies \n **//stats** gives all kinds of stats \n **//ping** Pong! \n **//wiki <input>** gives the wikipedia page of the input if it is valid \n **//funny** gives a random Cyanide & Happiness Comic \n **//serverinfo** gives info about the server \n **//kick <mention a user>** Kicks the mentioned user, only works if the kicker has kick member perms \n **//addrole <metion user> <role name>** Adds the given role to the mentioned user \n **//removerole <mention user> <role name>** same as //addrole but removes it \n **//news** will ask for a news outlet and will give the top four headlines \n **//clock** gives a world clock \n **//reddit** allows you to search a subreddit and get the 5 newest posts \n Be on the lookout for easter eggs!");
       msg.reply("Help has arrived! Check your DMs!");
     } else if(msg.content === "RIP"){
         msg.channel.sendMessage("Yeah, RIP");
@@ -537,6 +539,39 @@ const name = args.join("_");
       .addField('Beijing', (hours + 8) + rest, true)
       console.log(embed);
       msg.channel.sendEmbed(embed);
+} else if(msg.content.startsWith(prefix + "reddit")){
+  msg.reply('Please enter //sub followed by a valid subreddit name(DO NOT type r/). You have 12 seconds to do this!')
+  .then(() => {
+  msg.channel.awaitMessages(response => response.content.startsWith(prefix + "sub") , {
+    max: 1,
+    time: 12000,
+    errors: ['time'],
+  })
+  .then((collected) => {
+    let newargs = collected.first().content.split(" ").slice(1);
+    console.log(newargs);
+  Reddit.subreddit(newargs).new().limit(5).exec(function(data){
+   
+    console.log(data.data.children[0].data.title);
+    const embed = new Discord.RichEmbed();
+  
+  embed.setColor(3447003)
+     
+      .setTitle(`Latest Posts for: ${data.data.children[0].data.subreddit}`)
+      .setThumbnail(`${data.data.children[0].data.thumbnail}`)
+      .addField(`\u200b`, `[${data.data.children[0].data.title}](${data.data.children[0].data.url})`, true)
+      .addField(`\u200b`, `[${data.data.children[1].data.title}](${data.data.children[1].data.url})`, true)
+      .addField(`\u200b`, `[${data.data.children[2].data.title}](${data.data.children[2].data.url})`, true)
+      .addField(`\u200b`, `[${data.data.children[3].data.title}](${data.data.children[3].data.url})`, true)
+      .addField(`\u200b`, `[${data.data.children[4].data.title}](${data.data.children[4].data.url})`, true)
+      msg.channel.sendEmbed(embed);
+       })
+    })
+    .catch(() => {
+      msg.channel.sendMessage('\:x: Oops! Something went wrong! Make sure you typed a valid subreddit name!');
+    })
+})
+
 }/* else if(msg.content.startsWith(prefix + "enablewelcome")){
     var guildfrom = msg.member.guild.id;
     var check = new settings({ name: guildfrom + " enabled" });
