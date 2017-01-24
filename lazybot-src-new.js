@@ -10,12 +10,15 @@ var r = require("nraw");
 var Reddit = new r("Testbot v0.0.1 by FirstComrade17");
  const NewsAPI = require('newsapi');
 let newsapi = new NewsAPI('0b3a687275104852a2b8e5c013dbc3b5');
+bot.config = require("./config.json");
 const TOKEN = process.env.TOKEN;
 bot.commands = new Discord.Collection();
 bot.aliases = new Discord.Collection();
+bot.commandInhibitors = new Discord.Collection();
+bot.functions = {};
 // Load the contents of the `/cmd/` folder and each file in it.
 fs.readdir("./functions/core", (err, files) => {
-  bot.functions.core = {''};
+  bot.functions.core = {};
   if (err) console.error(err);
   files.forEach(f=> {
     let name = f.split(".")[0];
