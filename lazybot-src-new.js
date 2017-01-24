@@ -555,9 +555,7 @@ console.log(args);
       msg.channel.sendEmbed(embed);
        })
     
-   if(error){
-    msg.channel.sendMessage("\:x: Oops something went wrong!");
-   }
+   
 
 
 }/* else if(msg.content.startsWith(prefix + "enablewelcome")){
