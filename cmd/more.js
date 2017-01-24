@@ -29,7 +29,7 @@ exports.run = (bot, msg, params = []) => {
           msg.channel.sendMessage("\:x: " +  "`" + "Error: Invalid Nation" + "`");
         }
       })
-}
+
 };
 
 exports.conf = {
