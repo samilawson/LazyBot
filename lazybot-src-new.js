@@ -454,6 +454,7 @@ const name = args.join("_");
   }
 } else if(msg.content.startsWith(prefix + "news")){
     let args = msg.content.split(" ").slice(1);
+ console.log(args);
 
  
     var newsAgency;
