@@ -452,30 +452,24 @@ const name = args.join("_");
     msg.reply("\:white_check_mark: Role " + name + " removed!");
 }
   }
-}  else if(msg.content.startsWith(prefix + "news")){
-  msg.reply('Please enter a valid news key: CNN, BBC, CNBC, Google, ESPN, Reddit, or Reuters')
-  .then(() => {
-  msg.channel.awaitMessages(response => response.content === "CNN" || response.content === "BBC" || response.content === "CNBC" || response.content === "Google" || response.content === "ESPN" || response.content === "Reddit" || response.content === "Reuters", {
-    max: 1,
-    time: 12000,
-    errors: ['time'],
-  })
-  .then((collected) => {
-    console.log(collected.first().content);
+} else if(msg.content.startsWith(prefix + "news")){
+    let args = msg.content.split(" ").slice(1);
+
+ 
     var newsAgency;
-    if(collected.first().content === "CNN"){
+    if(args === "CNN"){
       newsAgency = "cnn";
-    } else if(collected.first().content === "BBC"){
+    } else if(args === "BBC"){
       newsAgency = "bbc-news";
-    } else if(collected.first().content === "CNBC"){
+    } else if(args === "CNBC"){
       newsAgency = "cnbc";
-    } else if(collected.first().content === "Google"){
+    } else if(args === "Google"){
       newsAgency = "google-news";
-    } else if(collected.first().content === "ESPN"){
+    } else if(args === "ESPN"){
       newsAgency = "espn";
-    } else if(collected.first().content === "Reddit"){
+    } else if(args === "Reddit"){
       newsAgency = "reddit-r-all";
-    } else if(collected.first().content === "Reuters"){
+    } else if(args === "Reuters"){
       newsAgency = "reuters";
     }
     const embed = new Discord.RichEmbed();
@@ -487,7 +481,7 @@ const name = args.join("_");
  
  
       embed.setColor(3447003)
-      .setTitle(`Latest News for ${newsAgency}`)
+      .setTitle(`Latest News for ${args}`)
       .setThumbnail(`${articlesResponse.articles[0]["urlToImage"]}`)
       .addField(`Top Headlines`, `[${articlesResponse.articles[0]["title"]}](${articlesResponse.articles[0]["url"]})`, true)
        .addField(`\u200b`,`[${articlesResponse.articles[1]["title"]}](${articlesResponse.articles[1]["url"]})`, true)
@@ -497,11 +491,11 @@ const name = args.join("_");
       msg.channel.sendEmbed(embed);
       
     })
-    })
+    
     .catch(() => {
       msg.channel.sendMessage('\:x: Oops! Something went wrong!');
     })
-})
+
    
 
 }  else if (msg.content.startsWith(prefix + "purge")) {
@@ -540,15 +534,8 @@ const name = args.join("_");
       console.log(embed);
       msg.channel.sendEmbed(embed);
 } else if(msg.content.startsWith(prefix + "reddit")){
-  msg.reply('Please enter //sub followed by a valid subreddit name(DO NOT type r/). You have 12 seconds to do this!')
-  .then(() => {
-  msg.channel.awaitMessages(response => response.content.startsWith(prefix + "sub") , {
-    max: 1,
-    time: 12000,
-    errors: ['time'],
-  })
-  .then((collected) => {
-    let newargs = collected.first().content.split(" ").slice(1);
+  
+    let newargs = msg.content.split(" ").slice(1);
     console.log(newargs);
   Reddit.subreddit(newargs).new().limit(5).exec(function(data){
    
@@ -566,11 +553,11 @@ const name = args.join("_");
       .addField(`\u200b`, `[${data.data.children[4].data.title}](${data.data.children[4].data.url})`, true)
       msg.channel.sendEmbed(embed);
        })
-    })
-    .catch(() => {
-      msg.channel.sendMessage('\:x: Oops! Something went wrong! Make sure you typed a valid subreddit name!');
-    })
-})
+    
+   if(error){
+    msg.channel.sendMessage("\:x: Oops something went wrong!");
+   }
+
 
 }/* else if(msg.content.startsWith(prefix + "enablewelcome")){
     var guildfrom = msg.member.guild.id;
