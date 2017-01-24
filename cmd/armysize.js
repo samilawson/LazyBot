@@ -18,7 +18,7 @@ exports.run = (bot, msg, params = []) => {
         });
         
         
-    }
+    
 };
 
 exports.conf = {
