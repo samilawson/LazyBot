@@ -24,7 +24,7 @@ fs.readdir("./functions/core", (err, files) => {
     let name = f.split(".")[0];
     bot.functions.core[name] = require(`./functions/core/${f}`);
   });
-  bot.log(`Loaded ${files.length} core functions`);
+  console.log(`Loaded ${files.length} core functions`);
   bot.functions.core.loadOptionalFunctions(bot);
   bot.functions.core.loadCommands(bot);
   bot.functions.core.loadCommandInhibitors(bot);
