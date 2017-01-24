@@ -453,9 +453,9 @@ const name = args.join("_");
 }
   }
 } else if(msg.content.startsWith(prefix + "news")){
-    let args = msg.content.split(" ").slice(1);
- console.log(args);
-
+    let inputted = msg.content.split(" ").slice(1);
+ var args = inputted.join("");
+console.log(args);
  
     var newsAgency;
     if(args === "CNN"){
