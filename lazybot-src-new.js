@@ -25,9 +25,9 @@ fs.readdir("./functions/core", (err, files) => {
     bot.functions.core[name] = require(`./functions/core/${f}`);
   });
   console.log(`Loaded ${files.length} core functions`);
-  bot.functions.core.loadOptionalFunctions(bot);
+ 
   bot.functions.core.loadCommands(bot);
-  bot.functions.core.loadCommandInhibitors(bot);
+ 
 });
 fs.readdir(`./cmd/`, (err, files) => {
   if(err) console.error(err);
