@@ -36,7 +36,7 @@ bot.on("ready", () => {
 bot.on("message", msg => {
     if (msg.content.startsWith(prefix + "nat")){
         const embed = new Discord.RichEmbed();
-  const args = msg.content.split(" ").slice(1);
+  const args = msg.contenconft.split(" ").slice(1);
   const name = args.join("_");
 
   const now = new Date();
@@ -98,7 +98,7 @@ bot.on("message", msg => {
           msg.channel.sendMessage("\:x: " +  "`" + "Error: Invalid Region" + "`");
         }
       })
-} else if(msg.content.startsWith(prefix + "emb")){
+} /*else if(msg.content.startsWith(prefix + "emb")){
   
   const args = msg.content.split(" ").slice(1);
   const name = args.join("_");
@@ -131,7 +131,7 @@ bot.on("message", msg => {
     msg.channel.sendMessage("\:x: Error! Invalid region name or exceeded character limit(2000)!");
   }
  })
-}
+}*/
 else if(msg.content.startsWith(prefix + "world")){
   const embed = new Discord.RichEmbed();
   const now = new Date();
@@ -453,9 +453,8 @@ const name = args.join("_");
 }
   }
 } else if(msg.content.startsWith(prefix + "news")){
-    let inputted = msg.content.split(" ").slice(1);
- var args = inputted.join("");
-console.log(args);
+    let args = msg.content.split(" ").slice(1);
+
  
     var newsAgency;
     if(args === "CNN"){
@@ -555,7 +554,9 @@ console.log(args);
       msg.channel.sendEmbed(embed);
        })
     
-   
+   if(error){
+    msg.channel.sendMessage("\:x: Oops something went wrong!");
+   }
 
 
 }/* else if(msg.content.startsWith(prefix + "enablewelcome")){
