@@ -15,7 +15,7 @@ bot.commands = new Discord.Collection();
 bot.aliases = new Discord.Collection();
 // Load the contents of the `/cmd/` folder and each file in it.
 fs.readdir("./functions/core", (err, files) => {
-  bot.functions.core = {};
+  bot.functions.core = {''};
   if (err) console.error(err);
   files.forEach(f=> {
     let name = f.split(".")[0];
