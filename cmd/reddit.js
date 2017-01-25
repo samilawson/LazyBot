@@ -1,3 +1,6 @@
+const Discord = require("discord.js");
+var r = require("nraw");
+var Reddit = new r("Testbot v0.0.1 by FirstComrade17");
 exports.run = (bot, msg, params = []) => {
   Reddit.subreddit(params).new().limit(5).exec(function(data){
    
