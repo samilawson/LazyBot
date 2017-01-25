@@ -1,3 +1,4 @@
+const Discord = require("discord.js");
 exports.run = (bot, msg, params = []) => {
   let name = msg.guild.id;
     
