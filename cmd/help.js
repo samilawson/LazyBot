@@ -11,8 +11,7 @@ exports.run = (bot, msg, params = []) => {
   
   embed.setColor(3447003)
      
-.setTitle(`Help for ${command.help.name}`)
-	  .addField(`\u200b`, `${command.help.description}`)
+.addField(`Help for ${command.help.name}`, `${command.help.description}`)
 	  .addField(`Usage`, `${command.help.usage}`)
     msg.channel.sendEmbed(embed);
 }
