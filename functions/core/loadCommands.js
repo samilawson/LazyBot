@@ -19,6 +19,6 @@ module.exports = bot => {
     files.forEach(f => {
       delete require.cache[require.resolve(`../../cmd/${f}`)];
     });
-    bot.log(`Loaded ${c} commands, with ${a} aliases.`);
+    console.log(`Loaded ${c} commands, with ${a} aliases.`);
   });
 };
