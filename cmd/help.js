@@ -6,7 +6,7 @@ exports.run = (bot, msg, params = []) => {
   let command = params[0];
   if(bot.commands.has(command)) {
     command = bot.commands.get(command);
-    msg.channel.sendMessage(``` ${command.help.name}  \n${command.help.description}\n Usage: //${command.help.usage}```);
+    msg.channel.sendMessage(```${command.help.name}\n${command.help.description}\n Usage: //${command.help.usage}```);
 }
 }
 };
