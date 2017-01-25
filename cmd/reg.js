@@ -27,7 +27,7 @@ exports.run = (bot, msg, params = []) => {
           msg.channel.sendMessage("\:x: " +  "`" + "Error: Invalid Region" + "`");
         }
       })
-}
+
 };
 
 exports.conf = {
