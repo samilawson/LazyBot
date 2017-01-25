@@ -9,7 +9,7 @@ exports.run = (bot, msg, params = []) => {
     command = bot.commands.get(command);
 	  const embed = new Discord.RichEmbed();
   
-  embed.setColor(3447003)
+  embed.setColor(0x161370)
      
 .addField(`Help for ${command.help.name}`, `${command.help.description}`)
 	  .addField(`Usage`, `${command.help.usage}`)
