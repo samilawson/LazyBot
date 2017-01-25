@@ -1,3 +1,4 @@
+const Discord = require("discord.js");
 exports.run = (bot, msg, params = []) => {
   const today = new Date();
   var hours = today.getHours();
