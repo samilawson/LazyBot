@@ -12,7 +12,7 @@ exports.run = (bot, msg, params = []) => {
   embed.setColor(0x161370)
      
 .addField(`Help for ${command.help.name}`, `${command.help.description}`)
-	  .addField(`Usage`, `${command.help.usage}`)
+	  .addField(`Usage`, "`" + "//" + command.help.usage + "`")
     msg.channel.sendEmbed(embed);
 }
 }
