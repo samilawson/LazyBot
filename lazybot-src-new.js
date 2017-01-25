@@ -10,12 +10,13 @@ var r = require("nraw");
 var Reddit = new r("Testbot v0.0.1 by FirstComrade17");
  const NewsAPI = require('newsapi');
 let newsapi = new NewsAPI('0b3a687275104852a2b8e5c013dbc3b5');
-const config.prefix = "//";
+
 const TOKEN = process.env.TOKEN;
 bot.commands = new Discord.Collection();
 bot.aliases = new Discord.Collection();
 bot.commandInhibitors = new Discord.Collection();
 bot.functions = {};
+const prefix = "//";
 // Load the contents of the `/cmd/` folder and each file in it.
 fs.readdir("./functions/core", (err, files) => {
   bot.functions.core = {};
@@ -49,9 +50,9 @@ fs.readdir(`./cmd/`, (err, files) => {
 
 bot.on('message', msg => {
   // Ignore message with no prefix for performance reasons
-  if(!msg.content.startsWith(config.prefix)) return;
+  if(!msg.content.startsWith(prefix)) return;
   // Get the command by getting the first part of the message and removing  the prefix.
-  var command = msg.content.split(" ")[0].slice(config.prefix.length);
+  var command = msg.content.split(" ")[0].slice(prefix.length);
   // Get the params in an array of arguments to be used in the bot
   var params = msg.content.split(" ").slice(1);
   // run the `elevation` function to get the user's permission level
@@ -76,7 +77,7 @@ bot.on('message', msg => {
 });
 
 bot.on("ready", () => {
-  bot.log(`Lazybot: Ready to serve ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} servers.`);
+  console.log(`Lazybot: Ready to serve ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} servers.`);
   bot.user.setGame(`//help //invite | ${bot.guilds.size} Servers!`);
 });
 
