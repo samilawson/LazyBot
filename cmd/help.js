@@ -6,7 +6,7 @@ exports.run = (bot, msg, params = []) => {
   let command = params[0];
   if(bot.commands.has(command)) {
     command = bot.commands.get(command);
-    msg.channel.sendCode("asciidoc", `= ${command.help.name} = \n${command.help.description}\nusage :: ${bot.config.prefix}${command.help.usage}`);
+    msg.channel.sendCode("asciidoc", `= ${command.help.name} = \n${command.help.description}\nusage ::` + "//" + `${command.help.usage}`);
 }
 }
 };
