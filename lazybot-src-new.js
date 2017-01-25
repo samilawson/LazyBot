@@ -70,7 +70,7 @@ bot.on('message', msg => {
 
   if(cmd) {
     // Check user's perm level against the required level in the command
-    if (perms < cmd.conf.permLevel) return;
+    
     // Run the `exports.run()` function defined in each command.
     cmd.run(bot, msg, params);
   }
