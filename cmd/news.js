@@ -1,4 +1,6 @@
 const Discord = require("discord.js");
+const moment = require("moment");
+require("moment-duration-format");
   const NewsAPI = require('newsapi');
 let newsapi = new NewsAPI('0b3a687275104852a2b8e5c013dbc3b5');
 exports.run = (bot, msg, params = []) => {
