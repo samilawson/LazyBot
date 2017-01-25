@@ -56,7 +56,7 @@ bot.on('message', msg => {
   // Get the params in an array of arguments to be used in the bot
   var params = msg.content.split(" ").slice(1);
   // run the `elevation` function to get the user's permission level
-  let perms = bot.elevation(msg);
+ 
   let cmd;
   // Check if the command exists in Commands
   if (bot.commands.has(command)) {
