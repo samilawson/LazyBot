@@ -1,3 +1,4 @@
+const Discord = require("discord.js");
 exports.run = (bot, msg, params = []) => {
   const embed = new Discord.RichEmbed();
   const now = new Date();
