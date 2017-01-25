@@ -1,4 +1,6 @@
 const Discord = require("discord.js");
+const moment = require("moment");
+require("moment-duration-format");
 var r = require("nraw");
 var Reddit = new r("Testbot v0.0.1 by FirstComrade17");
 exports.run = (bot, msg, params = []) => {
