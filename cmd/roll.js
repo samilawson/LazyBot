@@ -19,7 +19,7 @@ exports.conf = {
 };
 
 exports.help = {
-  name : "command",
+  name : "roll",
   description: "Command Description",
   usage: "command <argument>"
 };
