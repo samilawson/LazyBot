@@ -1,4 +1,6 @@
 const Discord = require("discord.js");
+const moment = require("moment");
+require("moment-duration-format");
 exports.run = (bot, msg, params = []) => {
   const embed = new Discord.RichEmbed();
          const now = new Date();
