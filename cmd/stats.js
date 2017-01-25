@@ -24,7 +24,7 @@ exports.run = (bot, msg, params = []) => {
         .addField(`❯ Users`, `${bot.users.size.toLocaleString()}`, true)
          .setFooter(`Generated on ${date} at ${time}`)
         msg.channel.sendEmbed(embed);
-    }
+    
 };
 
 exports.conf = {
