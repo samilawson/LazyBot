@@ -33,7 +33,7 @@ exports.run = (bot, msg, params = []) => {
 
 };
 
-exports. = {
+exports.conf = {
   enabled: true, // not used yet
   guildOnly: false, // not used yet
   aliases: ["nation"],
