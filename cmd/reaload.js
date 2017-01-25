@@ -15,7 +15,7 @@ exports.run = (bot, msg, params) => {
   }
   if (!command) {
     if (params[0].includes(".js")) params[0] = params[0].replace(".js","");
-    fs.stat(`./cmds/${params[0]}.js`, (err, stats) => {
+    fs.stat(`./cmd/${params[0]}.js`, (err, stats) => {
       if (err) return msg.channel.sendMessage(`I cannot find the command: ${params[0]}`);
       if (stats.isFile()) {
         msg.channel.sendMessage(`Loading New Command: ${params[0]}`)
