@@ -1,7 +1,7 @@
 exports.run = (bot, msg, params = []) => {
   var coin = ["Heads!", "Tails!"]
-  const randomNumber = Math.floor(Math.random() * (quotes.length));
-  msg.channel.sendMessage(quotes[randomNumber]);
+  const randomNumber = Math.floor(Math.random() * (coin.length));
+  msg.channel.sendMessage(coin[randomNumber]);
 };
 
 exports.conf = {
