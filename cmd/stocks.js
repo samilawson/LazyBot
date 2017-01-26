@@ -3,6 +3,7 @@ const moment = require("moment");
 require("moment-duration-format");
 const Markit = require('markit-on-demand')
 exports.run = (bot, msg, params = []) => {
+  const embed = new Discord.RichEmbed();
   Markit.getQuote(params)
     .then(( res ) => {
         console.log('Results:', res);
