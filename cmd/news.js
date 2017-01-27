@@ -37,18 +37,16 @@ exports.run = (bot, msg, params = []) => {
   }).then(articlesResponse => {
     console.log(articlesResponse);
  
-      embed.setColor(3447003)
-      .setTitle(`Latest News for ${newsAgency}`)
-      .setThumbnail(`http://www.vtc.edu/sites/default/files/news-3.jpg`)
-      .addField(`Headline`, `${articlesResponse.articles[0]["title"]}`, true)
-      .addField(`Link`, `${articlesResponse.articles[0]["url"]}`, true)
-      .addField(`Headline`, `${articlesResponse.articles[1]["title"]}`, true)
-      .addField(`Link`, `${articlesResponse.articles[1]["url"]}`, true)
-      .addField(`Headline`, `${articlesResponse.articles[2]["title"]}`, true)
-      .addField(`Link`, `${articlesResponse.articles[2]["url"]}`, true)
-      .addField(`Headline`, `${articlesResponse.articles[3]["title"]}`, true)
-      .addField(`Link`, `${articlesResponse.articles[3]["url"]}`, true)
+     embed.setColor(3447003)
+      .setTitle(`Latest News for ${params}`)
+      .setThumbnail(`${articlesResponse.articles[0]["urlToImage"]}`)
+      .addField(`Top Headlines`, `[${articlesResponse.articles[0]["title"]}](${articlesResponse.articles[0]["url"]})`, true)
+       .addField(`\u200b`,`[${articlesResponse.articles[1]["title"]}](${articlesResponse.articles[1]["url"]})`, true)
+      .addField(`\u200b`,`[${articlesResponse.articles[2]["title"]}](${articlesResponse.articles[2]["url"]})`, true)
+      .addField(`\u200b`,`[${articlesResponse.articles[3]["title"]}](${articlesResponse.articles[3]["url"]})`, true)
+      .addField(`\u200b`,`[${articlesResponse.articles[4]["title"]}](${articlesResponse.articles[4]["url"]})`, true)
       msg.channel.sendEmbed(embed);
+      
       
     })
     })
