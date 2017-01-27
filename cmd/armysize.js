@@ -1,3 +1,4 @@
+const request = require("superagent");
 exports.run = (bot, msg, params = []) => {
   const name = params.join("_");
   request.get('https://www.nationstates.net/cgi-bin/api.cgi?nation=' + name + '&q=population').end((err, res) => {
