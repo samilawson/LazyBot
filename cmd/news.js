@@ -18,9 +18,9 @@ exports.run = (bot, msg, params = []) => {
     if(collected.first().content === "CNN"){
       newsAgency = "cnn";
     } else if(collected.first().content === "Washington Post"){
-      newsAgency = "the_washington_post";
+      newsAgency = "the-washington-post";
     } else if(collected.first().content === "WSJ"){
-      newsAgency = "the_wall_street_journal";
+      newsAgency = "the-wall-street-journal";
     } else if(collected.first().content === "google"){
       newsAgency = "google-news";
     } else if(collected.first().content === "espn"){
