@@ -2,7 +2,7 @@ exports.run = (bot, msg, params = []) => {
   
         var output = params.join(" ");
         
-        bot.channels.get("264845260339806211").sendMessage("A bug was submitted from " + "**" + msg.member.guild.name + "**" + "```\n" + output + "\n```");
+        bot.channels.get("282596256390316042").sendMessage("A bug was submitted from " + "**" + msg.member.guild.name + "**" + "```\n" + output + "\n```");
 
    
 
