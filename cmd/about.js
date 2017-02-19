@@ -5,7 +5,7 @@ exports.run = (bot, msg, params = []) => {
   .setTitle(`LazyBot Info`)
   .addField(`Author`, `FirstComrade17`)
   .addField(`Language and Stuff`, `Javascript, discord.js`)
-  .addField(`Special Features`,'\n```http\nNationstates.net Functionality\nUtilities, like stocks! With more added often!\nRole management!\n```')
+  .addField(`Special Features`,'\n```http\nNationstates.net functionality\nUtilities, like stocks, with more added often!\nRole management!\n```')
   .addField(`Invite Link`, `[Invite me!](https://discordapp.com/oauth2/authorize?client_id=259784917339078656&scope=bot&permissions=0)`)
   .addField(`Website`, `[Click me!](lazybot.comeze.com)`)
   .setFooter(`Thanks for your support!`)
