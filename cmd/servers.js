@@ -1,5 +1,5 @@
 exports.run = (bot, msg, params = []) => {
-  msg.channel.sendMessage('On ' + bot.guilds.size.toLocaleString() + ' servers!');
+  msg.channel.sendMessage('On **' + bot.guilds.size.toLocaleString() + '** servers!');
 
         
     
