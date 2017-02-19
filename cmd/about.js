@@ -1,5 +1,15 @@
+const Discord = require("discord.js");
 exports.run = (bot, msg, params = []) => {
-  msg.channel.sendMessage("Check out my features here: http://lazybot.comeze.com/index.html");
+  const embed = new Discord.RichEmbed();
+  embed.setColor(0x161370)
+  .setTitle(`LazyBot Info`)
+  .addField(`Author`, `FirstComrade17`)
+  .addField(`Language and Stuff`, `Javascript, discord.js`)
+  .addField(`Special Features`,`\n```http\nNationstates.net Functionality\nUtilities, like stocks! With more added often!\nRole management!\n````)
+  .addField(`Invite Link`, `[Invite me!](https://discordapp.com/oauth2/authorize?client_id=259784917339078656&scope=bot&permissions=0)`)
+  .addField(`Website`, `[Click me!](lazybot.comeze.com)`)
+  .setFooter(`Thanks for your support!`)
+  msg.channel.sendEmbed(embed);
 };
 
 exports.conf = {
