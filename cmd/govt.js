@@ -14,13 +14,13 @@ exports.run = (bot, msg, params = []) => {
 
   result.then((res) => {
     parseString(res.text, (err, obj) => {
-      console.log(res.text);
+      
       embed.setColor(3447003)
         .setAuthor(`${obj.NATION.NAME}`, `${obj.NATION.FLAG}`)
         .setTitle(`Government Info for ${obj.NATION.NAME}`)
         .setDescription(obj.NATION.FULLNAME)
         .setThumbnail(`${obj.NATION.FLAG}`)
-        .addField('Administration', obj.NATION.GOVT.ADMINISTRATION, true)
+        .addField('Administration', obj.NATION.GOVT[0], true)
         .addField('Defense', obj.NATION.GOVT.DEFENCE, true)
         .addField('Education', obj.NATION.GOVT.EDUCATION, true)
         .addField('Environment', obj.NATION.GOVT.ENVIRONMENT, true)
