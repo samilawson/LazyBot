@@ -40,7 +40,7 @@ exports.run = (bot, msg, params = []) => {
           msg.channel.sendMessage("\:x: " +  "`" + "Error: Invalid Nation" + "`"); //checks to see if the nation exists
         }
       })
-}
+
 };
 
 exports.conf = {
