@@ -14,6 +14,7 @@ exports.run = (bot, msg, params = []) => {
 
   result.then((res) => {
     parseString(res.text, (err, obj) => {
+      console.log(res.text);
       embed.setColor(3447003)
         .setAuthor(`${obj.NATION.NAME}`, `${obj.NATION.FLAG}`)
         .setTitle(`Government Info for ${obj.NATION.NAME}`)
