@@ -3,7 +3,7 @@ var parseString = require('xml2js').parseString;
 var xml2js = require('xml2js');
 exports.run = (bot, msg, params = []) => {
   const name = params.join("_");
-  const result = request.get('https://www.nationstates.net/cgi-bin/api.cgi?nation=' + name + '&q=population+govt').end((err, res) => {
+  const result = request.get('https://www.nationstates.net/cgi-bin/api.cgi?nation=' + name + '&q=population+govt');
             //if(err) throw err;
             result.then((res) => {
             parseString(res.text, (err, obj) => {
@@ -36,7 +36,7 @@ exports.run = (bot, msg, params = []) => {
   })
        
         
-  }); 
+   
 };
 
 exports.conf = {
