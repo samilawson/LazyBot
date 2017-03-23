@@ -30,7 +30,7 @@ exports.run = (bot, msg, params = []) => {
             
         
             
-        });
+        
            
     })
   })
