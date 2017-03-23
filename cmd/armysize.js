@@ -9,7 +9,7 @@ exports.run = (bot, msg, params = []) => {
             parseString(res.text, (err, obj) => {
             console.log(obj);
             var numero = obj.NATION.POPULATION;
-            var size = (numbero * 1000000);
+            var size = (numero * 1000000);
             console.log(size);
             var modifier = ((obj.NATION.GOVT[0].DEFENCE/100)* 1000000);
             if (size > 10000000 && size < 50000000){
