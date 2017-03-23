@@ -13,19 +13,19 @@ exports.run = (bot, msg, params = []) => {
             console.log(size);
             var modifier = ((obj.NATION.GOVT[0].DEFENCE/100)* 1000000);
             if (size > 10000000 && size < 50000000){
-            	msg.channel.sendMessage("Army Size: " + (1500000 + modifier));
+            	msg.channel.sendMessage("Army Size: " + (1500000 + modifier).toLocaleString());
             } else if (size > 50000000 && size < 100000000){
-            	msg.channel.sendMessage("Army Size: " + (1750000 + modifier));
+            	msg.channel.sendMessage("Army Size: " + (1750000 + modifier).toLocaleString());
             } else if (size > 100000000 && size < 500000000){
-            	msg.channel.sendMessage("Army Size: " + (2000000 + modifier));
+            	msg.channel.sendMessage("Army Size: " + (2000000 + modifier).toLocaleString());
             } else if (size > 500000000 && size < 1000000000){
-            	msg.channel.sendMessage("Army Size: " + (2250000 + modifier));
+            	msg.channel.sendMessage("Army Size: " + (2250000 + modifier).toLocaleString());
             } else if (size > 1000000000 && size < 5000000000){
-            	msg.channel.sendMessage("Army Size: " + (2500000 + modifier));
+            	msg.channel.sendMessage("Army Size: " + (2500000 + modifier).toLocaleString());
             } else if (size > 5000000000 && size < 10000000000){
-            	msg.channel.sendMessage("Army Size: " + (2750000 + modifier));
+            	msg.channel.sendMessage("Army Size: " + (2750000 + modifier).toLocaleString());
             } else if(size > 10000000000){
-            	msg.channel.sendMessage("Army Size: " + (3000000 + modifier));
+            	msg.channel.sendMessage("Army Size: " + (3000000 + modifier).toLocaleString());
             }
             
         
