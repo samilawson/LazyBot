@@ -34,11 +34,7 @@ exports.run = (bot, msg, params = []) => {
            
     })
   })
-        .catch((err) => {
-        if(err){
-          msg.channel.sendMessage("\:x: " +  "`" + "Error: Invalid Nation" + "`"); //checks to see if the nation exists
-        }
-      })
+       
         
   }); 
 };
