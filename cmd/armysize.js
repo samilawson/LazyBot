@@ -1,25 +1,44 @@
 const request = require("superagent");
 exports.run = (bot, msg, params = []) => {
   const name = params.join("_");
-  request.get('https://www.nationstates.net/cgi-bin/api.cgi?nation=' + name + '&q=population').end((err, res) => {
+  request.get('https://www.nationstates.net/cgi-bin/api.cgi?nation=' + name + '&q=population+govt').end((err, res) => {
             //if(err) throw err;
-            console.log(res.text);
-            //var xml = res.text;
-            var numbero = res.text.replace(/(<([^>]+)>)/ig,"");
-            console.log(numbero);
+            result.then((res) => {
+            parseString(res.text, (err, obj) => {
+            console.log(obj);
+            var numero = obj.NATION.POPULATION;
             var size = (numbero * 1000000);
             console.log(size);
-            var final = size * .05;
-            console.log(final);
-            var endresult = final.toLocaleString();
-            console.log(endresult);
-            msg.channel.sendMessage("Army Size: " + endresult);
+            var modifier = ((obj.NATION.GOVT[0].DEFENCE/100)* 1000000);
+            if (size > 10000000 && size < 50000000){
+            	msg.channel.sendMessage("Army Size: " + (1500000 + modifier));
+            } else if (size > 50000000 && size < 100000000){
+            	msg.channel.sendMessage("Army Size: " + (1750000 + modifier));
+            } else if (size > 100000000 && size < 500000000){
+            	msg.channel.sendMessage("Army Size: " + (2000000 + modifier));
+            } else if (size > 500000000 && size < 1000000000){
+            	msg.channel.sendMessage("Army Size: " + (2250000 + modifier));
+            } else if (size > 1000000000 && size < 5000000000){
+            	msg.channel.sendMessage("Army Size: " + (2500000 + modifier));
+            } else if (size > 5000000000 && size < 10000000000){
+            	msg.channel.sendMessage("Army Size: " + (2750000 + modifier));
+            } else if(size > 10000000000){
+            	msg.channel.sendMessage("Army Size: " + (3000000 + modifier));
+            }
+            
         
             
         });
+           
+    })
+  })
+        .catch((err) => {
+        if(err){
+          msg.channel.sendMessage("\:x: " +  "`" + "Error: Invalid Nation" + "`"); //checks to see if the nation exists
+        }
+      })
         
-        
-    
+    }
 };
 
 exports.conf = {
@@ -31,6 +50,6 @@ exports.conf = {
 
 exports.help = {
   name : "armysize",
-  description: "Gives the armysize of a NationStates nation(population x .05).",
+  description: "Gives the armysize of a NationStates nation.",
   usage: "armysize <nation name>"
 };
