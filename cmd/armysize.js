@@ -1,4 +1,6 @@
 const request = require("superagent");
+var parseString = require('xml2js').parseString;
+var xml2js = require('xml2js');
 exports.run = (bot, msg, params = []) => {
   const name = params.join("_");
   request.get('https://www.nationstates.net/cgi-bin/api.cgi?nation=' + name + '&q=population+govt').end((err, res) => {
