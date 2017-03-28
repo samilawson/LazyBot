@@ -14,8 +14,8 @@ var toTranslate = params.slice(1).join(" ");
  console.log(toTranslate);
 googleTranslate.translate(toTranslate, langTo, function(err, translated){
  console.log(translated);
- embed.setColor(3447003)
- .addField('', '```\n' + translation[0] + '\n ```')
+ embed.setColor(344700[0]3)
+ .addField('', '```\n' + translated[0] + '\n ```')
 msg.channel.sendEmbed(embed); 
 });
 
