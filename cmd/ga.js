@@ -13,6 +13,7 @@ const embed = new Discord.RichEmbed();
 request.get('https://www.nationstates.net/cgi-bin/api.cgi?wa=1&q=lastresolution').end((err, res) => {
         console.log(res.text);
         var second = res.text.replace(/(<([^>]+)>)/ig,"");
+  second = second.replace(/[\[\]']+/g,'');
         console.log(second);
         msg.channel.sendMessage(second);
       });
