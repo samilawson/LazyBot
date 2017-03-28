@@ -12,8 +12,8 @@ const langTo = params[0];
 var toTranslate = params.slice(1).join(" ");
  console.log(langTo);
  console.log(toTranslate);
-googleTranslate.translate(toTranslate, langTo, function(err, translation){
- console.log(translation[0]);
+googleTranslate.translate(toTranslate, langTo, function(err, translated){
+ console.log(translated.translatedText);
  embed.setColor(3447003)
  .addField('', '```\n' + translation[0] + '\n ```')
 msg.channel.sendEmbed(embed); 
