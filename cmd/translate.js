@@ -10,6 +10,8 @@ const embed = new Discord.RichEmbed();
 
 const langTo = params[0];
 var toTranslate = params.slice(0);
+ console.log(langTo);
+ console.log(toTranslate);
 googleTranslate.translate(toTranslate, langTo, function(err, translation){
  console.log(translation[0]);
  embed.setColor(3447003)
