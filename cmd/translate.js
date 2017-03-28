@@ -11,9 +11,9 @@ const embed = new Discord.RichEmbed();
 const langTo = params[0];
 var toTranslate = params.slice(0);
 googleTranslate.translate(toTranslate, langTo, function(err, translation){
- console.log(translation.translatedText);
+ console.log(translation);
  embed.setColor(3447003)
- .addField('', '```\n' + translation.translatedText + '\n ```')
+ .addField('', '```\n' + translation + '\n ```')
 msg.channel.sendEmbed(embed); 
 });
 
