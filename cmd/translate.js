@@ -13,8 +13,8 @@ var toTranslate = params.slice(1).join(" ");
  console.log(langTo);
  console.log(toTranslate);
 googleTranslate.translate(toTranslate, langTo, function(err, translated){
- console.log(translated);
- embed.setColor(344700[0]3)
+ console.log(translated[0]);
+ embed.setColor(3447003)
  .addField('', '```\n' + translated[0] + '\n ```')
 msg.channel.sendEmbed(embed); 
 });
