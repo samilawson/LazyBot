@@ -9,7 +9,7 @@ exports.run = (bot, msg, params = []) => {
 const embed = new Discord.RichEmbed();
 
 const langTo = params[0];
-var toTranslate = params.slice(0);
+var toTranslate = params.slice(1).join(" ");
  console.log(langTo);
  console.log(toTranslate);
 googleTranslate.translate(toTranslate, langTo, function(err, translation){
