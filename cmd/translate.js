@@ -4,7 +4,7 @@ require("moment-duration-format");
 var request = require('superagent');
 var parseString = require('xml2js').parseString;
 var xml2js = require('xml2js');
-var googleTranslate = require('google-translate')(GOOG);
+var googleTranslate = require('google-translate')(process.env.GOOG);
 exports.run = (bot, msg, params = []) => {
 const embed = new Discord.RichEmbed();
 
