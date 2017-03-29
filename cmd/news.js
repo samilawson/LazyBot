@@ -34,6 +34,7 @@ exports.run = (bot, msg, params = []) => {
     newsapi.articles({
     source: newsAgency, // required
     sortBy: 'top' // optional
+    })
   .then(articlesResponse => {
     console.log(articlesResponse);
  
