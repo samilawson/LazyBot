@@ -17,7 +17,7 @@ exports.run = (bot, msg, params = []) => {
     var newsAgency;
     if(news === "CNN"){
       newsAgency = "cnn";
-    } else if(news === "Washington Post"){
+    } else if(news === "WashingtonPost"){
       newsAgency = "the-washington-post";
     } else if(news === "WSJ"){
       newsAgency = "the-wall-street-journal";
