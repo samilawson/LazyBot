@@ -4,8 +4,8 @@ require("moment-duration-format");
   const NewsAPI = require('newsapi');
 let newsapi = new NewsAPI('0b3a687275104852a2b8e5c013dbc3b5');
 exports.run = (bot, msg, params = []) => {
-  
-   msg.reply('Please enter a valid news key: CNN, Washingon Post, WSJ (Wall Street Journal), google, espn, Reddit, or Reuters')
+  const news = params[1];
+  /* msg.reply('Please enter a valid news key: CNN, Washingon Post, WSJ (Wall Street Journal), google, espn, Reddit, or Reuters')
   .then(() => {
   msg.channel.awaitMessages(response => response.content === "CNN" || response.content === "Washington Post" || response.content === "WSJ" || response.content === "google" || response.content === "espn" || response.content === "Reddit" || response.content === "Reuters", {
     max: 1,
@@ -13,23 +13,23 @@ exports.run = (bot, msg, params = []) => {
     errors: ['time'],
   })
   .then((collected) => {
-    console.log(collected.first().content);
+    console.log(collected.first().content); */
     var newsAgency;
-    if(collected.first().content === "CNN"){
+    if(news === "CNN"){
       newsAgency = "cnn";
-    } else if(collected.first().content === "Washington Post"){
+    } else if(news === "Washington Post"){
       newsAgency = "the-washington-post";
-    } else if(collected.first().content === "WSJ"){
+    } else if(news === "WSJ"){
       newsAgency = "the-wall-street-journal";
-    } else if(collected.first().content === "google"){
+    } else if(news === "google"){
       newsAgency = "google-news";
-    } else if(collected.first().content === "espn"){
+    } else if(news === "espn"){
       newsAgency = "espn";
-    } else if(collected.first().content === "Reddit"){
+    } else if(news === "Reddit"){
       newsAgency = "reddit-r-all";
-    } else if(collected.first().content === "Reuters"){
+    } else if(news === "Reuters"){
       newsAgency = "reuters";
-    }
+    } 
     const embed = new Discord.RichEmbed();
     newsapi.articles({
     source: newsAgency, // required
