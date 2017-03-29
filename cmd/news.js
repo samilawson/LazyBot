@@ -50,7 +50,7 @@ exports.run = (bot, msg, params = []) => {
       
       
     })
-    })
+
     .catch(() => {
       msg.channel.sendMessage('\:x: Oops! Something went wrong!');
     
