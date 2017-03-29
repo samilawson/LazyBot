@@ -14,6 +14,7 @@ request.get('https://www.nationstates.net/cgi-bin/api.cgi?wa=2&q=lastresolution'
         console.log(res.text);
         var second = res.text.replace(/(<([^>]+)>)/ig,"");
         console.log(second);
+   second = second.replace(/[\[\]']+/g,'');
         msg.channel.sendMessage(second);
       });
 
