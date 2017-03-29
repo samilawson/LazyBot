@@ -4,7 +4,7 @@ require("moment-duration-format");
   const NewsAPI = require('newsapi');
 let newsapi = new NewsAPI('0b3a687275104852a2b8e5c013dbc3b5');
 exports.run = (bot, msg, params = []) => {
-  const news = params[1];
+  const news = params[0];
   /* msg.reply('Please enter a valid news key: CNN, Washingon Post, WSJ (Wall Street Journal), google, espn, Reddit, or Reuters')
   .then(() => {
   msg.channel.awaitMessages(response => response.content === "CNN" || response.content === "Washington Post" || response.content === "WSJ" || response.content === "google" || response.content === "espn" || response.content === "Reddit" || response.content === "Reuters", {
