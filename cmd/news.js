@@ -34,7 +34,7 @@ exports.run = (bot, msg, params = []) => {
     newsapi.articles({
     source: newsAgency, // required
     sortBy: 'top' // optional
-  }).then(articlesResponse => {
+  .then(articlesResponse => {
     console.log(articlesResponse);
  
      embed.setColor(3447003)
