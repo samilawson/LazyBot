@@ -3,7 +3,7 @@ LazyBot- a Discord Bot for use with NationStates!
 
 [Invite to your server!](https://discordapp.com/oauth2/authorize?client_id=259784917339078656&scope=bot&permissions=0)
 
-##Features
+## Features
 
 The bot prefix is // 
 
