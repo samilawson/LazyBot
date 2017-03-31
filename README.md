@@ -5,32 +5,40 @@ LazyBot- a Discord Bot for use with NationStates!
 
 ##Features
 
-First Header | Second Header
+The bot prefix is // 
+
+Command Name | Description
 ------------ | -------------
-Content from cell 1 | Content from cell 2
-Content in the first column | Content in the second column
-
-###NationStates
-//nat <nation name> gives a bunch of nation info, type //more <nation name> for more nation info 
-//reg <region name> gives info about a region 
-
-###LazyBot Commands 
-//invite sends the url to invite this bot to your server 
-//testserv sends an invite to my Bot HQ 
-//suggest leave me a suggestion! 
-//stats gives all kinds of stats 
-//ping Pong! 
-//wiki <input> gives the wikipedia page of the input if it is valid 
-//funny gives a random Cyanide & Happiness Comic 
-//serverinfo gives info about the server 
-//news will ask for a news outlet and will give the top four headlines 
-//clock gives a world clock 
-//reddit allows you to search a subreddit and get the 5 newest posts LazyBot Admin Commands Requires manage server, manage roles, and manage members permissions! 
-###Server Management
-//kick <mention a user> Kicks the mentioned user, only works if the kicker has kick member perms 
-//addrole <metion user> <role name> Adds the given role to the mentioned user 
-//removerole <mention user> <role name> same as //addrole but removes it
-
+nat | Gives information on the given nation
+more | Gives more information in teh given nation
+reg | Gives information on the given region
+govt | Gives the government spending of the given nation
+ga | Gives the latest GA Resolution that was voted on
+sc | Gives the latest SC Resolution that was voted on
+world | Gives the number of regions, nations, and the featured region
+about | Gives information about the bot
+addrole | Adds the given role to the mentioned user
+bug | Submit any bugs you find
+coinflip | Flips a coin
+createrole | Creates a role with the given name
+funny | Gives a random C&H comic
+help | Gives the list of commands, type //help <command name> for more help
+invite | Sends a link to invite the bot
+kick | Kicks the mentioned user
+news | Gives the top five stories from the given news outlet
+ping | Pong! Response time command
+purge | Deletes the given amount of messages up to 100
+reddit | Gets the top five posts of a given subreddit
+removerole | Removes the given role from the mentioned user
+roll | Allow you to roll a dice with a range of 1-100
+serverinfo | Gives statistics on the current server
+servers | Gives the number of servers the bot is in
+stats | Gives all sorts of stats about the bot
+stocks | Gives the trading at and opening value of the given stock
+suggest | Suggest a feature
+testserv | Sends a link to LazyBot HQ
+userinfo | Gives info about the mentioned user
+wiki | Gives a link to the wikipedia page of the given text if it exists
 
 
 
