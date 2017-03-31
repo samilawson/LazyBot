@@ -4,6 +4,12 @@ LazyBot- a Discord Bot for use with NationStates!
 [Invite to your server!](https://discordapp.com/oauth2/authorize?client_id=259784917339078656&scope=bot&permissions=0)
 
 ##Features
+
+First Header | Second Header
+------------ | -------------
+Content from cell 1 | Content from cell 2
+Content in the first column | Content in the second column
+
 ###NationStates
 //nat <nation name> gives a bunch of nation info, type //more <nation name> for more nation info 
 //reg <region name> gives info about a region 
