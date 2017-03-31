@@ -27,5 +27,5 @@ LazyBot- a Discord Bot for use with NationStates!
 
 
 
-<a href="https://discord.gg/TmQQddz"><img src="https://discordapp.com/api/guilds/216659428915544064/widget.png?style=banner2" alt="Discord server"></a> 
+<a href="https://discord.gg/TmQQddz"><img src="https://discordapp.com/widget?id=216659428915544064&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" alt="Discord server"></a> 
  [![](https://discordapp.com/api/guilds/216659428915544064/embed.png?style=banner2)](https://discord.gg/TmQQddz)
