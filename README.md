@@ -26,6 +26,7 @@ LazyBot- a Discord Bot for use with NationStates!
 //removerole <mention user> <role name> same as //addrole but removes it
 
 
-
+---
 <!-- <a href="https://discord.gg/TmQQddz"><img src="https://discordapp.com/widget?id=216659428915544064&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" alt="Discord server"></a> -->
  [![](https://discordapp.com/api/guilds/216659428915544064/embed.png?style=banner2)](https://discord.gg/TmQQddz)
+---
