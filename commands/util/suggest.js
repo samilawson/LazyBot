@@ -26,7 +26,7 @@ module.exports = class SuggestCommand extends Command {
 
     const { suggestion } = args;
     const content = `A suggestion was submitted from **${msg.member.guild.name}**\n${suggestion}`;
-    const id = ' 264845260339806211';
+    const id = '446430959185952769';
     new Promise((resolve, reject)=> {
       superagent.post(`https://discordapp.com/api/channels/${id}/messages`)
       .set(`Authorization`, `Bot MjY0ODUwNTE0OTA5MzMxNDU2.C0mlNw.-fEkhcmlo2QyFvoEisXNGohDrBE`).send({ content })
@@ -37,7 +37,7 @@ module.exports = class SuggestCommand extends Command {
 
         } else {
           resolve(res);
-          msg.say("Thank you for your suggestion! If you have any questions please join my server: https://discord.gg/TmQQddz");
+          msg.say("Thank you for your suggestion! If you have any questions please join my server: https://discord.gg/UpzaFcn");
         }
       });
     });
