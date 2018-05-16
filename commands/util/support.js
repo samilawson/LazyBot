@@ -15,6 +15,6 @@ module.exports = class SupportCommand extends Command {
   }
 
   async run(msg) {
-    msg.reply("Come to my server! https://discord.gg/TmQQddz");
+    msg.reply("Come to my server! https://discord.gg/UpzaFcn");
   }
 };
