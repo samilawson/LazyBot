@@ -1,0 +1,107 @@
+{
+  "216659428915544064": {
+    "welcomemessage": "enabled",
+    "leavingmessage": "enabled",
+    "leavemessage": "Bye {user}!",
+    "joinMessage": "Welcome {user} to LazyBot HQ!",
+    "modlog": "enabled"
+  },
+  "219540913959993344": {
+    "welcomemessage": "enabled",
+    "joinMessage": "welcome to the guild",
+    "leavingmessage": "disabled"
+  },
+  "273834639108472832": {
+    "welcomemessage": "enabled",
+    "leavingmessage": "enabled",
+    "joinMessage": "Hello {user}, welcome to Norrland Official! Please tell your nation's name to the Grand Council, so we can mask you.",
+    "leavemessage": "{user} just left the server."
+  },
+  "250292922585448468": {
+    "welcomemessage": "disabled"
+  },
+  "206810544706027520": {
+    "welcomemessage": "enabled",
+    "joinMessage": "Welcome to the USSD, Comrade {user}! Please state your main nation.",
+    "leavemessage": "Begone, traitorus cur {user}",
+    "leavingmessage": "enabled"
+  },
+  "283810728589262848": {
+    "welcomemessage": "enabled",
+    "leavingmessage": "enabled",
+    "joinMessage": "Hello {user}!",
+    "leavemessage": "Goodbye {user}"
+  },
+  "217752286288543744": {
+    "welcomemessage": "enabled",
+    "joinMessage": "Welcome {user} to the CTSN!",
+    "leavingmessage": "enabled",
+    "leavemessage": "Goodbye {user}!"
+  },
+  "277201906974064641": {
+    "joinMessage": "Welcome to Phoenix Coalition's discord server, {name}. I'll inform the <@&317309819012775937> of your arrival and while you wait, I suggest you change your nickname (by typing in `/nick`) to your nation name on NS!",
+    "welcomemessage": "enabled"
+  },
+  "310585065421668353": {
+    "joinMessage": "",
+    "welcomemessage": "disabled"
+  },
+  "317360613401690122": {
+    "welcomemessage": "enabled",
+    "joinMessage": "Welcome {user} to the SSU!",
+    "leavingmessage": "enabled",
+    "leavemessage": "{user} has left the server... liberal scum"
+  },
+  "240597369840861186": {
+    "welcomemessage": "enabled",
+    "joinMessage": "Welcome to TVT RP {user} please tell us who you are and what region you reside in!",
+    "leavingmessage": "enabled",
+    "leavemessage": "Goodbye {user}"
+  },
+  "321349808818356225": {
+    "joinMessage": "Good noon {user}! Please stay with us as long as you would like and have a great time with our shenanigans!",
+    "welcomemessage": "enabled"
+  },
+  "296762289816862720": {
+    "joinMessage": "Welcome to Antichrist Superstar! Please follow the rules and have a good time!",
+    "welcomemessage": "enabled"
+  },
+  "303282160301899776": {
+    "joinMessage": "welcome to our test server. How did you make in here?!"
+  },
+  "323527313767530496": {
+    "welcomemessage": "enabled",
+    "joinMessage": "Welcome, {user} . This is the official Classical Party Chat."
+  },
+  "297442085861064705": {
+    "leavingmessage": "enabled",
+    "leavemessage": "{user} just left ModzBot official"
+  },
+  "259549008366796802": {
+    "welcomemessage": "enabled",
+    "joinMessage": "Welcome {user} to Star Wars Powers!",
+    "leavingmessage": "enabled",
+    "leavemessage": "Goodbye {user}"
+  },
+  "325755358343593985": {
+    "welcomemessage": "enabled",
+    "joinMessage": "Hello {user}. Have fun and follow the rules please. If not then gulag awaits you.",
+    "leavingmessage": "enabled",
+    "leavemessage": "{user} has left the server. Guess gulag isn't an option anymore."
+  },
+  "324615753288515586": {
+    "welcomemessage": "enabled",
+    "leavingmessage": "enabled",
+    "joinMessage": "Welcome {user} to the official Discord chat of the League of Nations. Please read <#324932264976711681> and <#324944645060689930>",
+    "leavemessage": "{user} just left the server."
+  },
+  "327517246798692372": {
+    "welcomemessage": "enabled",
+    "joinMessage": "Welcome {user} to the Concord Coalition!",
+    "leavingmessage": "enabled",
+    "leavemessage": "Goodbye {user}..."
+  },
+  "446057416505688074": {
+    "joinMessage": "momgay"
+  }
+}
