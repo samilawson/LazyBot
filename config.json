@@ -1,5 +1,0 @@
-{
-  "prefix": "//",
-  "optnFunctions": [],
-  "commandInhibitors": ["disable", "permissions", "missingBotPermissions"]
-}
