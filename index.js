@@ -35,7 +35,7 @@ fs.readdir(`${__dirname}/events/`, (err, files) => {
 });
 
 
-    client.login('');
+    client.login('MjU5Nzg0OTE3MzM5MDc4NjU2.Ddzu_Q.hqMv4wFNSUufEenTVh5uQPvu_vM');
 
 
     //cd C:\Users\Sam L\Documents\LazyBot
