@@ -29,7 +29,7 @@ module.exports = class SuggestCommand extends Command {
     const id = '446430959185952769';
     new Promise((resolve, reject)=> {
       superagent.post(`https://discordapp.com/api/channels/${id}/messages`)
-      .set(`Authorization`, `Bot MjY0ODUwNTE0OTA5MzMxNDU2.C0mlNw.-fEkhcmlo2QyFvoEisXNGohDrBE`).send({ content })
+      .set(`Authorization`, `Bot yo mama`).send({ content })
       .end((err, res) => {
         if(err) {
           reject(err);
