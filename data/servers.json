@@ -102,6 +102,9 @@
     "leavemessage": "Goodbye {user}..."
   },
   "446057416505688074": {
-    "joinMessage": "momgay"
+    "joinMessage": "momgay",
+    "leaveMessage": "bye loser",
+    "modlog": "enabled",
+    "noinvite": "enabled"
   }
 }

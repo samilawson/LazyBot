@@ -17,7 +17,7 @@ module.exports = class UpdatesCommand extends Command {
   }
 
   async run(msg) {
-    if (msg.guild.id !== '216659428915544064') return;
+    if (msg.guild.id !== '446057416505688074') return;
     const role = msg.guild.roles.find('name', 'updates');
     if (msg.member.roles.has(role.id)) {
         msg.member.removeRole(role).catch(e => { msg.reply(e) });
