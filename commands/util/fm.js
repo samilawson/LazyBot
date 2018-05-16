@@ -1,7 +1,7 @@
 const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
 const fs = require('fs');
-const unames = JSON.parse(fs.readFileSync("./uname.json", "utf8"));
+const unames = JSON.parse(fs.readFileSync("./data/unames.json", "utf8"));
 const request = require('superagent');
 
 
