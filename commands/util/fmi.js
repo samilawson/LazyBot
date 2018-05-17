@@ -6,7 +6,7 @@ const request = require('superagent');
 const Canvas = require('canvas-prebuilt');
 const path = require('path');
 const https = require('https')
-const getProp = require('dotprop');
+//const getProp = require('dotprop');
 const lastfmapi = require('lastfmapi')
 const lfm = new lastfmapi({
   'api_key': '1336029958418997879ebb165f5fbb3f'
