@@ -2,9 +2,9 @@ const { Command } = require('discord.js-commando');
 const { RichEmbed } = require('discord.js');
 const moment = require("moment");
 require("moment-duration-format");
-var request = require('superagent');
-var parseString = require('xml2js').parseString;
-var xml2js = require('xml2js');
+const request = require('superagent');
+const parseString = require('xml2js').parseString;
+const xml2js = require('xml2js');
 
 module.exports = class TriggeredCommand extends Command {
     constructor(client) {
